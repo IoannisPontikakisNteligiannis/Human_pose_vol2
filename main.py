@@ -65,11 +65,11 @@ def main():
         depth_color = cv2.applyColorMap(depth_8u, cv2.COLORMAP_JET)
         return depth_color
 
-    #  Initialize hand tracking components
+    # Initialize hand tracking components
     hand_tracker = HandTracker(max_num_hands=2)
-    #gesture_detector = HandGestureDetector()
+    gesture_detector = HandGestureDetector()
     combined_viz = CombinedVisualizer()
-    hand_tracking_enabled = False  # Start with hand tracking OFF for performance
+    hand_tracking_enabled = True  # Start with hand tracking ON
 
     # Initialize Reaction Time Detector
     reaction_detector = ReactionTimeDetector()
@@ -85,6 +85,10 @@ def main():
     current_exercise = 'bicep'
     current_detector = right_bicep_detector
     exercise_detection_enabled = True
+
+    # Zoom and move variables for exercise tracker
+    exercise_zoom = 1.0
+    exercise_offset = (0, 0)
 
     # Frame skipping variables
     frame_counter = 0
@@ -249,16 +253,31 @@ def main():
                 # Process hands
                 hand_results = hand_tracker.process(image_rgb)
 
-                # # Detect gesture from right hand (primary control hand)
-                # gesture_result = {'gesture': 'No Hand', 'confidence': 0.0}
-                # if hand_tracker.has_right_hand():
-                #     gesture_result = gesture_detector.detect_gesture(
-                #         hand_tracker.get_all_landmarks('right')
-                #     )
+                # Detect gesture from right hand (primary control hand)
+                gesture_result = {'gesture': 'No Hand', 'confidence': 0.0}
+                if hand_tracker.has_right_hand():
+                    gesture_result = gesture_detector.detect_gesture(
+                        hand_tracker.get_all_landmarks('right')
+                    )
 
-                # # Cache hand results A
-                # cached_hand_results = hand_results
-                # cached_gesture_result = gesture_result
+                # Handle gesture controls for exercise tracker
+                if gesture_result['gesture'] == 'Pinch':
+                    exercise_zoom = max(0.5, exercise_zoom * 0.95)
+                elif gesture_result['gesture'] == 'Spread':
+                    exercise_zoom = min(2.0, exercise_zoom * 1.05)
+                elif gesture_result['gesture'] == 'Touch':
+                    if hand_tracker.has_right_hand():
+                        landmarks = hand_tracker.get_all_landmarks('right')
+                        thumb_tip = landmarks.landmark[4]
+                        index_tip = landmarks.landmark[8]
+                        hand_x = int((thumb_tip.x + index_tip.x) / 2 * FRAME_WIDTH)
+                        hand_y = int((thumb_tip.y + index_tip.y) / 2 * FRAME_HEIGHT)
+                        # Move panel to hand position
+                        exercise_offset = (hand_x - 490, hand_y - 175)  # approximate center
+
+                # Cache hand results
+                cached_hand_results = hand_results
+                cached_gesture_result = gesture_result
             elif hand_tracking_enabled:
                 # Use cached hand data
                 hand_results = cached_hand_results
@@ -349,7 +368,7 @@ def main():
 
             # Draw exercise information
             if exercise_detection_enabled and exercise_results:
-                display_manager.draw_exercise_info(image, exercise_results)
+                display_manager.draw_exercise_info(image, exercise_results, exercise_zoom, exercise_offset)
 
             # Reaction Time Integration
             reaction_result = reaction_detector.update(angles_dict)

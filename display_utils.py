@@ -398,14 +398,26 @@ class DisplayManager:
             cv2.putText(image, th_text, (x_pos, y_pos), 
                        cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 0), 1, cv2.LINE_8)
     
-    def draw_exercise_info(self, image, exercise_results):
+    def draw_exercise_info(self, image, exercise_results, zoom=1.0, offset=(0,0)):
         """Draw exercise detection information"""
         if not exercise_results:
             return
         
+        # Base dimensions
+        base_x1, base_y1 = 350, 50
+        base_width, base_height = 280, 250
+        
+        # Apply zoom and offset
+        x1 = int(base_x1 + offset[0])
+        y1 = int(base_y1 + offset[1])
+        width = int(base_width * zoom)
+        height = int(base_height * zoom)
+        x2 = x1 + width
+        y2 = y1 + height
+        
         # Exercise info panel background (semi-transparent)
         overlay = image.copy()
-        cv2.rectangle(overlay, (350, 50), (630, 300), (0, 0, 0), -1)
+        cv2.rectangle(overlay, (x1, y1), (x2, y2), (0, 0, 0), -1)
         cv2.addWeighted(overlay, 0.7, image, 0.3, 0, image)
         
         # Exercise info panel border 
@@ -415,63 +427,68 @@ class DisplayManager:
         elif 'Bicep' in exercise_results.get('exercise', ''):
             border_color = (255, 255, 255) 
         
-        cv2.rectangle(image, (350, 50), (630, 300), border_color, 2)
+        cv2.rectangle(image, (x1, y1), (x2, y2), border_color, 2)
         
         # Title with exercise-specific color
         title_color = (255, 255, 255) if 'Abduction' in exercise_results.get('exercise', '') else (255, 255, 255)
-        cv2.putText(image, "EXERCISE TRACKER", (360, 80), 
-                   cv2.FONT_HERSHEY_SIMPLEX, 0.7, title_color, 2, cv2.LINE_8)
+        title_x = x1 + 10
+        title_y = y1 + 30
+        font_scale = 0.7 * zoom
+        cv2.putText(image, "EXERCISE TRACKER", (title_x, title_y), 
+                   cv2.FONT_HERSHEY_SIMPLEX, font_scale, title_color, 2, cv2.LINE_8)
         
-        y_pos = 110
+        y_pos = title_y + 10
         
         # Exercise name and arm
         exercise_text = f"{exercise_results['exercise']} ({exercise_results['arm']})"
-        cv2.putText(image, exercise_text, (360, y_pos), 
-                   cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2, cv2.LINE_8)
-        y_pos += 30
+        text_x = x1 + 10
+        text_font_scale = 0.6 * zoom
+        cv2.putText(image, exercise_text, (text_x, y_pos), 
+                   cv2.FONT_HERSHEY_SIMPLEX, text_font_scale, (255, 255, 255), 2, cv2.LINE_8)
+        y_pos += int(30 * zoom)
         
         # Rep count 
         rep_text = f"REPS: {exercise_results['rep_count']}"
-        cv2.putText(image, rep_text, (360, y_pos), 
-                   cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 2, cv2.LINE_8)
-        y_pos += 35
+        cv2.putText(image, rep_text, (text_x, y_pos), 
+                   cv2.FONT_HERSHEY_SIMPLEX, text_font_scale, (0, 255, 0), 2, cv2.LINE_8)
+        y_pos += int(35 * zoom)
         
         # Current state
         state_text = f"State: {exercise_results['state']}"
         state_color = self._get_state_color(exercise_results['state'])
-        cv2.putText(image, state_text, (360, y_pos), 
-                   cv2.FONT_HERSHEY_SIMPLEX, 0.5, state_color, 2, cv2.LINE_8)
-        y_pos += 25
+        cv2.putText(image, state_text, (text_x, y_pos), 
+                   cv2.FONT_HERSHEY_SIMPLEX, text_font_scale * 0.83, state_color, 2, cv2.LINE_8)
+        y_pos += int(25 * zoom)
         
         # Current angle
         if exercise_results['angle'] is not None:
             angle_text = f"Angle: {exercise_results['angle']}"
-            cv2.putText(image, angle_text, (360, y_pos), 
-                       cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1, cv2.LINE_8)
+            cv2.putText(image, angle_text, (text_x, y_pos), 
+                       cv2.FONT_HERSHEY_SIMPLEX, text_font_scale * 0.83, (255, 255, 255), 1, cv2.LINE_8)
         else:
-            cv2.putText(image, "Angle: N/A", (360, y_pos), 
-                       cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1, cv2.LINE_8)
-        y_pos += 25
+            cv2.putText(image, "Angle: N/A", (text_x, y_pos), 
+                       cv2.FONT_HERSHEY_SIMPLEX, text_font_scale * 0.83, (0, 0, 255), 1, cv2.LINE_8)
+        y_pos += int(25 * zoom)
         
         # Peak and valley angles (if available)
         if exercise_results.get('peak_angle') is not None:
             peak_text = f"Peak: {exercise_results['peak_angle']}"
-            cv2.putText(image, peak_text, (360, y_pos), 
-                       cv2.FONT_HERSHEY_SIMPLEX, 0.4, (100, 255, 100), 1, cv2.LINE_8)
-            y_pos += 20
+            cv2.putText(image, peak_text, (text_x, y_pos), 
+                       cv2.FONT_HERSHEY_SIMPLEX, text_font_scale * 0.67, (100, 255, 100), 1, cv2.LINE_8)
+            y_pos += int(20 * zoom)
             
         if exercise_results.get('valley_angle') is not None:
             valley_text = f"Valley: {exercise_results['valley_angle']}"
-            cv2.putText(image, valley_text, (360, y_pos), 
-                       cv2.FONT_HERSHEY_SIMPLEX, 0.4, (100, 255, 100), 1, cv2.LINE_8)
-            y_pos += 20            
+            cv2.putText(image, valley_text, (text_x, y_pos), 
+                       cv2.FONT_HERSHEY_SIMPLEX, text_font_scale * 0.67, (100, 255, 100), 1, cv2.LINE_8)
+            y_pos += int(20 * zoom)            
 
        
         # Feedback (word-wrapped if too long)
         feedback = exercise_results.get('feedback', '')
         if feedback:
-            self._draw_wrapped_text(image, feedback, (360, y_pos), 
-                                  cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 0), 1)
+            self._draw_wrapped_text(image, feedback, (text_x, y_pos), 
+                                  cv2.FONT_HERSHEY_SIMPLEX, text_font_scale * 0.83, (255, 255, 0), 1, max_width=width - 20)
     
     def _get_state_color(self, state):
         """Get color for exercise state"""
@@ -483,7 +500,7 @@ class DisplayManager:
         }
         return state_colors.get(state, (255, 255, 255))
     
-    def _draw_wrapped_text(self, image, text, position, font, scale, color, thickness):
+    def _draw_wrapped_text(self, image, text, position, font, scale, color, thickness, max_width=250):
         """Draw text with word wrapping"""
         words = text.split(' ')
         lines = []
@@ -493,7 +510,7 @@ class DisplayManager:
             test_line = current_line + " " + word if current_line else word
             (text_width, _), _ = cv2.getTextSize(test_line, font, scale, thickness)
             
-            if text_width < 250:  # Max width for text
+            if text_width < max_width:  # Max width for text
                 current_line = test_line
             else:
                 if current_line:

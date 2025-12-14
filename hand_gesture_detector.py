@@ -56,104 +56,110 @@ class HandGestureDetector:
         
         return dist_tip > dist_ip
     
-#     def detect_gesture(self, hand_landmarks):
-#         """
-#         Detect gesture from hand landmarks
+    def detect_gesture(self, hand_landmarks):
+        """
+        Detect gesture from hand landmarks
         
-#         Args:
-#             hand_landmarks: MediaPipe hand landmarks
+        Args:
+            hand_landmarks: MediaPipe hand landmarks
             
-#         Returns:
-#             dict: {'gesture': str, 'confidence': float}
-#         """
-#         if not hand_landmarks:
-#             return {'gesture': 'No Hand', 'confidence': 0.0}
+        Returns:
+            dict: {'gesture': str, 'confidence': float}
+        """
+        if not hand_landmarks:
+            return {'gesture': 'No Hand', 'confidence': 0.0}
         
-#         landmarks = hand_landmarks
+        landmarks = hand_landmarks
         
-#         # Check which fingers are extended
-#         thumb_extended = self.is_thumb_extended(landmarks)
-#         index_extended = self.is_finger_extended(landmarks, 8, 6, 5)
-#         middle_extended = self.is_finger_extended(landmarks, 12, 10, 9)
-#         ring_extended = self.is_finger_extended(landmarks, 16, 14, 13)
-#         pinky_extended = self.is_finger_extended(landmarks, 20, 18, 17)
+        # Check which fingers are extended
+        thumb_extended = self.is_thumb_extended(landmarks)
+        index_extended = self.is_finger_extended(landmarks, 8, 6, 5)
+        middle_extended = self.is_finger_extended(landmarks, 12, 10, 9)
+        ring_extended = self.is_finger_extended(landmarks, 16, 14, 13)
+        pinky_extended = self.is_finger_extended(landmarks, 20, 18, 17)
         
-#         # Count extended fingers
-#         extended_count = sum([
-#             thumb_extended,
-#             index_extended,
-#             middle_extended,
-#             ring_extended,
-#             pinky_extended
-#         ])
+        # Count extended fingers
+        extended_count = sum([
+            thumb_extended,
+            index_extended,
+            middle_extended,
+            ring_extended,
+            pinky_extended
+        ])
         
-#         # Detect specific gestures
-#         gesture = "Unknown"
-#         confidence = 0.8
+        # Detect specific gestures
+        gesture = "Unknown"
+        confidence = 0.8
         
-#         # Thumbs Up
-#         if thumb_extended and not any([index_extended, middle_extended, ring_extended, pinky_extended]):
-#             gesture = "Thumbs Up"
-#             confidence = 0.9
+        # Thumbs Up
+        if thumb_extended and not any([index_extended, middle_extended, ring_extended, pinky_extended]):
+            gesture = "Thumbs Up"
+            confidence = 0.9
         
-#         # Fist (no fingers extended)
-#         elif extended_count == 0:
-#             gesture = "Fist"
-#             confidence = 0.95
+        # Fist (no fingers extended)
+        elif extended_count == 0:
+            gesture = "Fist"
+            confidence = 0.95
         
-#         # Open Hand (all fingers extended)
-#         elif extended_count == 5:
-#             gesture = "Open Hand"
-#             confidence = 0.9
+        # Open Hand (all fingers extended)
+        elif extended_count == 5:
+            gesture = "Open Hand"
+            confidence = 0.9
         
-#         # Peace Sign (index and middle extended)
-#         elif index_extended and middle_extended and not any([thumb_extended, ring_extended, pinky_extended]):
-#             gesture = "Peace Sign"
-#             confidence = 0.85
+        # Peace Sign (index and middle extended)
+        elif index_extended and middle_extended and not any([thumb_extended, ring_extended, pinky_extended]):
+            gesture = "Peace Sign"
+            confidence = 0.85
         
-#         # Pointing (only index extended)
-#         elif index_extended and not any([thumb_extended, middle_extended, ring_extended, pinky_extended]):
-#             gesture = "Pointing"
-#             confidence = 0.85
+        # Pointing (only index extended)
+        elif index_extended and not any([thumb_extended, middle_extended, ring_extended, pinky_extended]):
+            gesture = "Pointing"
+            confidence = 0.85
         
-#         # OK Sign (thumb and index forming circle)
-#         elif thumb_extended and index_extended:
-#             thumb_tip = landmarks.landmark[4]
-#             index_tip = landmarks.landmark[8]
-#             distance = self.calculate_distance(thumb_tip, index_tip)
+        # Pinch/Spread/Touch with thumb and index
+        elif thumb_extended and index_extended:
+            thumb_tip = landmarks.landmark[4]
+            index_tip = landmarks.landmark[8]
+            distance = self.calculate_distance(thumb_tip, index_tip)
             
-#             if distance < 0.05:  # Close together
-#                 gesture = "OK Sign"
-#                 confidence = 0.8
+            if distance < 0.03:  # Very close - touch for move
+                gesture = "Touch"
+                confidence = 0.9
+            elif distance < 0.08:  # Close together - pinch for zoom in
+                gesture = "Pinch"
+                confidence = 0.8
+            else:  # Far apart - spread for zoom out
+                gesture = "Spread"
+                confidence = 0.8
         
-#         # Number gestures
-#         elif extended_count == 1:
-#             gesture = "One"
-#         elif extended_count == 2:
-#             gesture = "Two"
-#         elif extended_count == 3:
-#             gesture = "Three"
-#         elif extended_count == 4:
-#             gesture = "Four"
+        # Number gestures
+        elif extended_count == 1:
+            gesture = "One"
+        elif extended_count == 2:
+            gesture = "Two"
+        elif extended_count == 3:
+            gesture = "Three"
+        elif extended_count == 4:
+            gesture = "Four"
         
-#         self.current_gesture = gesture
-#         self.gesture_confidence = confidence
+        self.current_gesture = gesture
+        self.gesture_confidence = confidence
         
-#         return {
-#             'gesture': gesture,
-#             'confidence': confidence,
-#             'extended_fingers': {
-#                 'thumb': thumb_extended,
-#                 'index': index_extended,
-#                 'middle': middle_extended,
-#                 'ring': ring_extended,
-#                 'pinky': pinky_extended
-#             }
-#         }
+        return {
+            'gesture': gesture,
+            'confidence': confidence,
+            'extended_fingers': {
+                'thumb': thumb_extended,
+                'index': index_extended,
+                'middle': middle_extended,
+                'ring': ring_extended,
+                'pinky': pinky_extended
+            }
+        }
     
 #     def get_current_gesture(self):
-#         """Get the most recently detected gesture"""
-#         return self.current_gesture
+        """Get the most recently detected gesture"""
+        return self.current_gesture
 
 
 # # Gesture-based control mappings (example)
