@@ -232,8 +232,8 @@ class DisplayManager:
         """Draw angle text at landmark position with optional offset"""
         if angle is not None:
             landmark_pixel = tuple(np.multiply([
-                landmarks.landmark[landmark_index].x,
-                landmarks.landmark[landmark_index].y
+                landmarks[landmark_index].x,
+                landmarks[landmark_index].y
             ], [self.frame_width, self.frame_height]).astype(int))
             
             # Apply offset
@@ -244,10 +244,10 @@ class DisplayManager:
                        cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2, cv2.LINE_8)
         else:
             # Show "Unknown" if angle can't be calculated
-            if landmarks.landmark[landmark_index].visibility > 0.3:
+            if landmarks[landmark_index].visibility > 0.3:
                 landmark_pixel = tuple(np.multiply([
-                    landmarks.landmark[landmark_index].x,
-                    landmarks.landmark[landmark_index].y
+                    landmarks[landmark_index].x,
+                    landmarks[landmark_index].y
                 ], [self.frame_width, self.frame_height]).astype(int))
                 
                 # Apply offset
@@ -292,7 +292,7 @@ class DisplayManager:
                                "LS", mp_pose.PoseLandmark.LEFT_SHOULDER.value, 
                                offset=(0, -15))
         else:
-            if landmarks.landmark[mp_pose.PoseLandmark.LEFT_SHOULDER.value].visibility > 0.3:
+            if landmarks[mp_pose.PoseLandmark.LEFT_SHOULDER.value].visibility > 0.3:
                 self.draw_angle_text(image, landmarks, None, 
                                    "LS", mp_pose.PoseLandmark.LEFT_SHOULDER.value, 
                                    offset=(0, -15))
@@ -306,7 +306,7 @@ class DisplayManager:
                                "RS", mp_pose.PoseLandmark.RIGHT_SHOULDER.value, 
                                offset=(0, -15))
         else:
-            if landmarks.landmark[mp_pose.PoseLandmark.RIGHT_SHOULDER.value].visibility > 0.3:
+            if landmarks[mp_pose.PoseLandmark.RIGHT_SHOULDER.value].visibility > 0.3:
                 self.draw_angle_text(image, landmarks, None, 
                                    "RS", mp_pose.PoseLandmark.RIGHT_SHOULDER.value, 
                                    offset=(0, -15))
@@ -319,7 +319,7 @@ class DisplayManager:
             self.draw_angle_text(image, landmarks, angles_dict["left_hip"], 
                                "LH", mp_pose.PoseLandmark.LEFT_HIP.value)
         else:
-            if landmarks.landmark[mp_pose.PoseLandmark.LEFT_HIP.value].visibility > 0.3:
+            if landmarks[mp_pose.PoseLandmark.LEFT_HIP.value].visibility > 0.3:
                 self.draw_angle_text(image, landmarks, None, 
                                    "LH", mp_pose.PoseLandmark.LEFT_HIP.value)
             else:
@@ -331,7 +331,7 @@ class DisplayManager:
             self.draw_angle_text(image, landmarks, angles_dict["right_hip"], 
                                "RH", mp_pose.PoseLandmark.RIGHT_HIP.value)
         else:
-            if landmarks.landmark[mp_pose.PoseLandmark.RIGHT_HIP.value].visibility > 0.3:
+            if landmarks[mp_pose.PoseLandmark.RIGHT_HIP.value].visibility > 0.3:
                 self.draw_angle_text(image, landmarks, None, 
                                    "RH", mp_pose.PoseLandmark.RIGHT_HIP.value)
             else:
@@ -343,7 +343,7 @@ class DisplayManager:
             self.draw_angle_text(image, landmarks, angles_dict["left_knee"], 
                                "LK", mp_pose.PoseLandmark.LEFT_KNEE.value)
         else:
-            if landmarks.landmark[mp_pose.PoseLandmark.LEFT_KNEE.value].visibility > 0.3:
+            if landmarks[mp_pose.PoseLandmark.LEFT_KNEE.value].visibility > 0.3:
                 self.draw_angle_text(image, landmarks, None, 
                                    "LK", mp_pose.PoseLandmark.LEFT_KNEE.value)
             else:
@@ -355,7 +355,7 @@ class DisplayManager:
             self.draw_angle_text(image, landmarks, angles_dict["right_knee"], 
                                "RK", mp_pose.PoseLandmark.RIGHT_KNEE.value)
         else:
-            if landmarks.landmark[mp_pose.PoseLandmark.RIGHT_KNEE.value].visibility > 0.3:
+            if landmarks[mp_pose.PoseLandmark.RIGHT_KNEE.value].visibility > 0.3:
                 self.draw_angle_text(image, landmarks, None, 
                                    "RK", mp_pose.PoseLandmark.RIGHT_KNEE.value)
             else:
