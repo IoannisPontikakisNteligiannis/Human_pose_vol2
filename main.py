@@ -135,7 +135,7 @@ def main():
                 break
 
             # Flip frame to correct handedness (since camera is mirrored)
-            frame = cv2.flip(frame, 1)
+            # frame = cv2.flip(frame, 1)
 
             # Frame skipping logic
             frame_counter += 1
@@ -230,7 +230,7 @@ def main():
 
                 # Cache pose results
                 cached_pose_results = pose_results
-                cached_landmarks = pose_results.pose_landmarks.landmark if pose_results and pose_results.pose_landmarks else None
+                cached_landmarks = pose_results.pose_landmarks if pose_results and pose_results.pose_landmarks else None
                 cached_angles_dict = angles_dict.copy()
                 cached_exercise_results = exercise_results
 
@@ -272,12 +272,8 @@ def main():
                     if hand_tracker.has_right_hand():
                         landmarks = hand_tracker.get_all_landmarks('right')
                         if landmarks:
-                            thumb_tip = landmarks.landmark[4]
-                            index_tip = landmarks.landmark[8]
-                            hand_x = int((thumb_tip.x + index_tip.x) / 2 * FRAME_WIDTH)
-                            hand_y = int((thumb_tip.y + index_tip.y) / 2 * FRAME_HEIGHT)
-                            # Move panel to hand position
-                            exercise_offset = (hand_x - 490, hand_y - 175)  # approximate center
+                            # For now, only zoom, no move
+                            pass  # exercise_offset remains unchanged  # approximate center
 
                 # Cache hand results
                 cached_hand_results = hand_results
@@ -447,7 +443,7 @@ def main():
             #            0.5, (255, 255, 0), 2)
 
             # # Display the frame
-            image = cv2.flip(image, 1)  # Flip back for display
+            # image = cv2.flip(image, 1)  # Flip back for display
             cv2.imshow('MediaPipe Pose + Hand Tracking', image)
 
             # === KEYBOARD CONTROLS ===
