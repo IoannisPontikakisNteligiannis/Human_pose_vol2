@@ -11,7 +11,7 @@ from shoulder_abduction_detector import ShoulderAbductionDetector
 from reaction_time_detector import ReactionTimeDetector
 from hand_tracker import HandTracker
 from pose_3d_visualizer import create_3d_pose_map
-#from hand_gesture_detector import HandGestureDetector, GESTURE_CONTROLS
+from hand_gesture_detector import HandGestureDetector
 
  # Try to use C++ optimized version, fallback to Python if unavailable
 # try:
