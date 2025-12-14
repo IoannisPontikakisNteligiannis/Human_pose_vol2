@@ -16,10 +16,10 @@ from hand_gesture_detector import HandGestureDetector
  # Try to use C++ optimized version, fallback to Python if unavailable
 # try:
 #     from angle_calculator_cpp import calculate_all_angles
-#     print(" Using C++ optimized angle calculator")
+#     print("✓ Using C++ optimized angle calculator")
 # except ImportError:
 from angle_calculator import calculate_all_angles
-print(" Using Python angle calculator")
+print("✓ Using Python angle calculator")
 
 
 # Initialize MediaPipe
@@ -41,7 +41,7 @@ def main():
         from realsense_adapter import RealSenseCapture
         cap = RealSenseCapture(FRAME_WIDTH, FRAME_HEIGHT)
         USE_REALSENSE = True
-        print(" Using Intel RealSense camera")
+        print("✓ Using Intel RealSense camera")
     except Exception:
         cap = cv2.VideoCapture(0)
         if not cap.isOpened():
@@ -89,6 +89,11 @@ def main():
     # Zoom and move variables for exercise tracker
     exercise_zoom = 1.0
     exercise_offset = (0, 0)
+    
+    # Touch gesture drag state
+    touch_dragging = False
+    touch_start_hand_pos = None
+    touch_start_offset = None
 
     # Frame skipping variables
     frame_counter = 0
@@ -97,15 +102,15 @@ def main():
 
     # Cache for skipped frames (POSE)
     cached_pose_results = None
-    cached_landmarks = None
+    cached_pose_landmarks = None
     cached_angles_dict = None
     cached_exercise_results = None
 
-    #  Cache for skipped frames (HANDS)
+    # Cache for skipped frames (HANDS)
     cached_hand_results = None
     cached_gesture_result = {'gesture': 'No Hand', 'confidence': 0.0}
 
-    #  Gesture control cooldown (prevent rapid triggering)
+    # Gesture control cooldown (prevent rapid triggering)
     last_gesture_action_time = 0
     gesture_cooldown = 2.0  # seconds
 
@@ -123,6 +128,7 @@ def main():
         print("E - Toggle Exercise Detection")
         print("A - Switch Arm | W - Switch Exercise")
         print("X - Reset Counter | T - Show Stats")
+        print("P - Reset Exercise Tracker Position")
         print("Q - Quit")
         print("================\n")
 
@@ -167,7 +173,7 @@ def main():
                 exercise_results = None
 
                 if pose_results and pose_results.pose_landmarks:
-                    landmarks = pose_results.pose_landmarks.landmark
+                    pose_landmarks = pose_results.pose_landmarks.landmark
                     # Provide depth info to angle calculator when available
                     depth_info = None
                     try:
@@ -177,9 +183,9 @@ def main():
                         depth_info = None
                     # Try depth-aware calculation, fall back if the angle calculator doesn't accept depth
                     try:
-                        angles_dict = calculate_all_angles(landmarks, depth_info)
+                        angles_dict = calculate_all_angles(pose_landmarks, depth_info)
                     except TypeError:
-                        angles_dict = calculate_all_angles(landmarks)
+                        angles_dict = calculate_all_angles(pose_landmarks)
 
                     if exercise_detection_enabled:
                         exercise_results = current_detector.update(angles_dict)
@@ -187,6 +193,7 @@ def main():
                     if pose_recorder.recording:
                         pose_recorder.add_frame(pose_results.pose_landmarks, angles_dict)
                 else:
+                    pose_landmarks = None
                     if exercise_detection_enabled:
                         exercise_results = current_detector.update(angles_dict)
 
@@ -230,7 +237,7 @@ def main():
 
                 # Cache pose results
                 cached_pose_results = pose_results
-                cached_landmarks = pose_results.pose_landmarks if pose_results and pose_results.pose_landmarks else None
+                cached_pose_landmarks = pose_landmarks
                 cached_angles_dict = angles_dict.copy()
                 cached_exercise_results = exercise_results
 
@@ -238,7 +245,7 @@ def main():
             else:
                 # Use cached pose data
                 pose_results = cached_pose_results
-                landmarks = cached_landmarks
+                pose_landmarks = cached_pose_landmarks
                 angles_dict = cached_angles_dict if cached_angles_dict else {
                     "left_elbow": None, "right_elbow": None,
                     "left_shoulder": None, "right_shoulder": None,
@@ -248,7 +255,7 @@ def main():
                 exercise_results = cached_exercise_results
                 current_fps = fps_counter.update('skipped')
 
-            #  HAND PROCESSING (if enabled) 
+            # === HAND PROCESSING (if enabled) ===
             if process_hand_frame:
                 image_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
                 image_rgb.flags.writeable = False
@@ -270,10 +277,49 @@ def main():
                     exercise_zoom = min(2.0, exercise_zoom * 1.05)
                 elif gesture_result['gesture'] == 'Touch':
                     if hand_tracker.has_right_hand():
-                        landmarks = hand_tracker.get_all_landmarks('right')
-                        if landmarks:
-                            # For now, only zoom, no move
-                            pass  # exercise_offset remains unchanged  # approximate center
+                        hand_landmarks = hand_tracker.get_all_landmarks('right')
+                        if hand_landmarks:
+                            # Get hand center position for moving the exercise tracker
+                            wrist = hand_landmarks.landmark[0]
+                            index_tip = hand_landmarks.landmark[8]
+                            
+                            # Use average of wrist and index tip as hand center
+                            hand_center_x = (wrist.x + index_tip.x) / 2
+                            hand_center_y = (wrist.y + index_tip.y) / 2
+                            
+                            # Convert to pixel coordinates
+                            hand_pixel_x = int(hand_center_x * FRAME_WIDTH)
+                            hand_pixel_y = int(hand_center_y * FRAME_HEIGHT)
+                            current_hand_pos = (hand_pixel_x, hand_pixel_y)
+                            
+                            if not touch_dragging:
+                                # Start dragging
+                                touch_dragging = True
+                                touch_start_hand_pos = current_hand_pos
+                                touch_start_offset = exercise_offset
+                            else:
+                                # Continue dragging - calculate relative movement
+                                if touch_start_hand_pos is not None:
+                                    delta_x = current_hand_pos[0] - touch_start_hand_pos[0]
+                                    delta_y = current_hand_pos[1] - touch_start_hand_pos[1]
+                                    
+                                    # Apply movement with reduced sensitivity
+                                    move_factor = 0.8
+                                    new_offset_x = touch_start_offset[0] + int(delta_x * move_factor)
+                                    new_offset_y = touch_start_offset[1] + int(delta_y * move_factor)
+                                    
+                                    # Clamp offset to keep panel on screen
+                                    max_offset_x = FRAME_WIDTH // 2 - 50  # Keep some margin
+                                    max_offset_y = FRAME_HEIGHT // 2 - 50
+                                    exercise_offset = (
+                                        max(-max_offset_x, min(max_offset_x, new_offset_x)),
+                                        max(-max_offset_y, min(max_offset_y, new_offset_y))
+                                    )
+                else:
+                    # Reset drag state when Touch gesture ends
+                    touch_dragging = False
+                    touch_start_hand_pos = None
+                    touch_start_offset = None
 
                 # Cache hand results
                 cached_hand_results = hand_results
@@ -287,36 +333,7 @@ def main():
                 hand_results = None
                 gesture_result = {'gesture': 'No Hand', 'confidence': 0.0}
 
-            # # === GESTURE CONTROLS ===
-            # current_time = time.time()
-            # if (gesture_controls_enabled and 
-            #     gesture_result['gesture'] in GESTURE_CONTROLS and
-            #     current_time - last_gesture_action_time > gesture_cooldown):
-                
-            #     action = GESTURE_CONTROLS[gesture_result['gesture']]
-                
-            #     if action == 'start_recording' and not pose_recorder.recording:
-            #         pose_recorder.start_recording()
-            #         saved_filename = None
-            #         print(f" Gesture Control: Started Recording (Thumbs Up)")
-            #         last_gesture_action_time = current_time
-                
-            #     elif action == 'stop_recording' and pose_recorder.recording:
-            #         saved_filename = pose_recorder.stop_recording()
-            #         print(f" Gesture Control: Stopped Recording (Fist)")
-            #         last_gesture_action_time = current_time
-                
-            #     elif action == 'toggle_exercise_detection':
-            #         exercise_detection_enabled = not exercise_detection_enabled
-            #         print(f" Gesture Control: Exercise Detection {'ON' if exercise_detection_enabled else 'OFF'} (Peace)")
-            #         last_gesture_action_time = current_time
-                
-            #     elif action == 'reset_counter':
-            #         current_detector.reset()
-            #         print(f" Gesture Control: Reset Counter (Open Hand)")
-            #         last_gesture_action_time = current_time
-
-            # VISUALIZATION 
+            # === VISUALIZATION ===
             image = frame.copy()
 
             # Apply depth overlay if enabled and available
@@ -342,27 +359,19 @@ def main():
                 )
                 
                 if pose_results and pose_results.pose_landmarks:
-                        display_manager.draw_all_angles(image, landmarks, angles_dict)
+                    display_manager.draw_all_angles(image, pose_landmarks, angles_dict)
                 else:
                     display_manager.draw_all_angles(image, None, angles_dict)
     
                
-               # Draw hand info
+                # Draw hand info
                 combined_viz.draw_hand_info(image, hand_tracker, y_offset=30)
                 
-                # # Draw gesture info
-                # if hand_results:
-                #     combined_viz.draw_gesture_info(image, gesture_result, x=10, y=80)
-                
-               
-                # # Draw gesture controls help (if enabled)
-                # if gesture_controls_enabled:
-                #     combined_viz.draw_hand_controls_help(image, x=10, y=350)
             else:
                 # Draw only pose (original behavior)
                 if pose_results and pose_results.pose_landmarks:
                     combined_viz.draw_pose(image, pose_results.pose_landmarks)
-                    display_manager.draw_all_angles(image, landmarks, angles_dict)
+                    display_manager.draw_all_angles(image, pose_landmarks, angles_dict)
                 else:
                     display_manager.draw_all_angles(image, None, angles_dict)
 
@@ -375,8 +384,8 @@ def main():
             if reaction_result['reaction_time_ms'] is not None:
                 if (reaction_result['reaction_time_ms'] != reaction_detector._last_printed_result and
                         reaction_result['angle_change'] is not None):
-                    print(f"\n REACTION TIME: {reaction_result['reaction_time_ms']}ms "
-                          f"(angle change: {reaction_result['angle_change']})")
+                    print(f"\n⚡ REACTION TIME: {reaction_result['reaction_time_ms']}ms "
+                          f"(angle change: {reaction_result['angle_change']}°)")
                     reaction_detector._last_printed_result = reaction_result['reaction_time_ms']
 
             # Draw status information
@@ -425,25 +434,7 @@ def main():
             except Exception:
                 pass
 
-            # # Draw hand tracking status
-            # hand_status = "HAND TRACKING: ON" if hand_tracking_enabled else "HAND TRACKING: OFF (press H)"
-            # hand_color = (0, 255, 0) if hand_tracking_enabled else (100, 100, 100)
-            # cv2.putText(image, hand_status,
-            #            (FRAME_WIDTH - 300, 30), cv2.FONT_HERSHEY_SIMPLEX,
-            #            0.5, hand_color, 2)
-
-            # if gesture_controls_enabled:
-            #     cv2.putText(image, "GESTURE CONTROLS: ON",
-            #                (FRAME_WIDTH - 300, 50), cv2.FONT_HERSHEY_SIMPLEX,
-            #                0.5, (0, 255, 255), 2)
-
-            # # Display 3D visualization instruction
-            # cv2.putText(image, "Press '3' for 3D pose map",
-            #            (FRAME_WIDTH - 250, 30), cv2.FONT_HERSHEY_SIMPLEX,
-            #            0.5, (255, 255, 0), 2)
-
-            # # Display the frame
-            # image = cv2.flip(image, 1)  # Flip back for display
+            # Display the frame
             cv2.imshow('MediaPipe Pose + Hand Tracking', image)
 
             # === KEYBOARD CONTROLS ===
@@ -457,10 +448,6 @@ def main():
                 depth_overlay_enabled = not depth_overlay_enabled
                 print(f"Depth overlay: {'ON' if depth_overlay_enabled else 'OFF'}")
 
-            # elif key == ord('g'):
-            #     gesture_controls_enabled = not gesture_controls_enabled
-            #     print(f"Gesture Controls: {'ON' if gesture_controls_enabled else 'OFF'}")
-
             elif key == ord('r'):
                 pose_recorder.start_recording() 
                 saved_filename = None
@@ -472,6 +459,12 @@ def main():
             elif key == ord('e'):
                 exercise_detection_enabled = not exercise_detection_enabled
                 print(f"Exercise detection: {'ON' if exercise_detection_enabled else 'OFF'}")
+
+            elif key == ord('p'):
+                # Reset exercise tracker position
+                exercise_offset = (0, 0)
+                exercise_zoom = 1.0
+                print("Exercise tracker position and zoom reset")
 
             elif key == ord('a'):
                 if current_exercise == 'bicep':
@@ -516,12 +509,12 @@ def main():
                 print(f"\n== {current_detector.arm.upper()} ARM {exercise_name} STATS ===")
                 print(f"Total Reps: {stats['total_reps']}")
                 print(f"Average Duration: {stats['avg_duration']}s")
-                print(f"Average Range of Motion: {stats['avg_range_of_motion']}")
+                print(f"Average Range of Motion: {stats['avg_range_of_motion']}°")
                 if stats['total_reps'] > 0:
                     print(f"Last Rep Duration: {stats['last_rep_duration']}s")
                 print("=" * 50)
 
-            elif key == ord('p'):
+            elif key == ord('z'):
                 fps_counter.print_detailed_stats()
 
             elif key == ord('f'):
