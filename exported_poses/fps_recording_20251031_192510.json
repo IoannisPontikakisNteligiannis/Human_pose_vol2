@@ -1,0 +1,2402 @@
+[
+  {
+    "frame_number": 0,
+    "timestamp": 6.5929811000823975,
+    "frame_type": "main",
+    "fps": 13.74636291831765,
+    "frame_time_ms": 72.74651527404785,
+    "dt": 0.07274651527404785
+  },
+  {
+    "frame_number": 1,
+    "timestamp": 6.60044527053833,
+    "frame_type": "main",
+    "fps": 133.97336059028333,
+    "frame_time_ms": 7.464170455932617,
+    "dt": 0.007464170455932617
+  },
+  {
+    "frame_number": 2,
+    "timestamp": 6.615083932876587,
+    "frame_type": "main",
+    "fps": 68.31225264255119,
+    "frame_time_ms": 14.638662338256836,
+    "dt": 0.014638662338256836
+  },
+  {
+    "frame_number": 3,
+    "timestamp": 6.629677772521973,
+    "frame_type": "main",
+    "fps": 68.52206302788714,
+    "frame_time_ms": 14.593839645385742,
+    "dt": 0.014593839645385742
+  },
+  {
+    "frame_number": 4,
+    "timestamp": 6.672870397567749,
+    "frame_type": "main",
+    "fps": 23.152100594492254,
+    "frame_time_ms": 43.19262504577637,
+    "dt": 0.04319262504577637
+  },
+  {
+    "frame_number": 5,
+    "timestamp": 6.745904445648193,
+    "frame_type": "main",
+    "fps": 13.692243909286482,
+    "frame_time_ms": 73.03404808044434,
+    "dt": 0.07303404808044434
+  },
+  {
+    "frame_number": 6,
+    "timestamp": 6.756649494171143,
+    "frame_type": "main",
+    "fps": 93.06612230407384,
+    "frame_time_ms": 10.745048522949219,
+    "dt": 0.010745048522949219
+  },
+  {
+    "frame_number": 7,
+    "timestamp": 6.8025124073028564,
+    "frame_type": "main",
+    "fps": 21.804109937981835,
+    "frame_time_ms": 45.86291313171387,
+    "dt": 0.04586291313171387
+  },
+  {
+    "frame_number": 8,
+    "timestamp": 6.813284873962402,
+    "frame_type": "main",
+    "fps": 92.8292499391364,
+    "frame_time_ms": 10.772466659545898,
+    "dt": 0.010772466659545898
+  },
+  {
+    "frame_number": 9,
+    "timestamp": 6.848841190338135,
+    "frame_type": "main",
+    "fps": 28.12439819222981,
+    "frame_time_ms": 35.55631637573242,
+    "dt": 0.03555631637573242
+  },
+  {
+    "frame_number": 10,
+    "timestamp": 6.860984563827515,
+    "frame_type": "main",
+    "fps": 82.34943945968233,
+    "frame_time_ms": 12.143373489379883,
+    "dt": 0.012143373489379883
+  },
+  {
+    "frame_number": 11,
+    "timestamp": 6.913884401321411,
+    "frame_type": "main",
+    "fps": 18.903649753468123,
+    "frame_time_ms": 52.899837493896484,
+    "dt": 0.052899837493896484
+  },
+  {
+    "frame_number": 12,
+    "timestamp": 6.9765825271606445,
+    "frame_type": "main",
+    "fps": 15.949440060842285,
+    "frame_time_ms": 62.6981258392334,
+    "dt": 0.0626981258392334
+  },
+  {
+    "frame_number": 13,
+    "timestamp": 6.987604379653931,
+    "frame_type": "main",
+    "fps": 90.7288498561509,
+    "frame_time_ms": 11.021852493286133,
+    "dt": 0.011021852493286133
+  },
+  {
+    "frame_number": 14,
+    "timestamp": 7.039331674575806,
+    "frame_type": "main",
+    "fps": 19.332153392330383,
+    "frame_time_ms": 51.727294921875,
+    "dt": 0.051727294921875
+  },
+  {
+    "frame_number": 15,
+    "timestamp": 7.053080320358276,
+    "frame_type": "main",
+    "fps": 72.73443623625707,
+    "frame_time_ms": 13.748645782470703,
+    "dt": 0.013748645782470703
+  },
+  {
+    "frame_number": 16,
+    "timestamp": 7.087587356567383,
+    "frame_type": "main",
+    "fps": 28.979596912936234,
+    "frame_time_ms": 34.507036209106445,
+    "dt": 0.034507036209106445
+  },
+  {
+    "frame_number": 17,
+    "timestamp": 7.099218130111694,
+    "frame_type": "main",
+    "fps": 85.97880409158928,
+    "frame_time_ms": 11.630773544311523,
+    "dt": 0.011630773544311523
+  },
+  {
+    "frame_number": 18,
+    "timestamp": 7.153665065765381,
+    "frame_type": "main",
+    "fps": 18.36650654429055,
+    "frame_time_ms": 54.44693565368652,
+    "dt": 0.05444693565368652
+  },
+  {
+    "frame_number": 19,
+    "timestamp": 7.168523073196411,
+    "frame_type": "main",
+    "fps": 67.30377573452719,
+    "frame_time_ms": 14.858007431030273,
+    "dt": 0.014858007431030273
+  },
+  {
+    "frame_number": 20,
+    "timestamp": 7.215133190155029,
+    "frame_type": "main",
+    "fps": 21.454569635339674,
+    "frame_time_ms": 46.610116958618164,
+    "dt": 0.046610116958618164
+  },
+  {
+    "frame_number": 21,
+    "timestamp": 7.229600667953491,
+    "frame_type": "main",
+    "fps": 69.12054844185165,
+    "frame_time_ms": 14.467477798461914,
+    "dt": 0.014467477798461914
+  },
+  {
+    "frame_number": 22,
+    "timestamp": 7.280782461166382,
+    "frame_type": "main",
+    "fps": 19.538197808750095,
+    "frame_time_ms": 51.181793212890625,
+    "dt": 0.051181793212890625
+  },
+  {
+    "frame_number": 23,
+    "timestamp": 7.32764458656311,
+    "frame_type": "main",
+    "fps": 21.33919431810088,
+    "frame_time_ms": 46.862125396728516,
+    "dt": 0.046862125396728516
+  },
+  {
+    "frame_number": 24,
+    "timestamp": 7.346834182739258,
+    "frame_type": "main",
+    "fps": 52.111570812677826,
+    "frame_time_ms": 19.18959617614746,
+    "dt": 0.01918959617614746
+  },
+  {
+    "frame_number": 25,
+    "timestamp": 7.3909759521484375,
+    "frame_type": "main",
+    "fps": 22.654279911852395,
+    "frame_time_ms": 44.14176940917969,
+    "dt": 0.04414176940917969
+  },
+  {
+    "frame_number": 26,
+    "timestamp": 7.394979476928711,
+    "frame_type": "main",
+    "fps": 249.77989518818484,
+    "frame_time_ms": 4.0035247802734375,
+    "dt": 0.0040035247802734375
+  },
+  {
+    "frame_number": 27,
+    "timestamp": 7.455187797546387,
+    "frame_type": "main",
+    "fps": 16.60900004751873,
+    "frame_time_ms": 60.20832061767578,
+    "dt": 0.06020832061767578
+  },
+  {
+    "frame_number": 28,
+    "timestamp": 7.4648120403289795,
+    "frame_type": "main",
+    "fps": 103.90427824708301,
+    "frame_time_ms": 9.624242782592773,
+    "dt": 0.009624242782592773
+  },
+  {
+    "frame_number": 29,
+    "timestamp": 7.519205093383789,
+    "frame_type": "main",
+    "fps": 18.38470068948589,
+    "frame_time_ms": 54.39305305480957,
+    "dt": 0.05439305305480957
+  },
+  {
+    "frame_number": 30,
+    "timestamp": 7.534165859222412,
+    "frame_type": "main",
+    "fps": 66.84149800796813,
+    "frame_time_ms": 14.960765838623047,
+    "dt": 0.014960765838623047
+  },
+  {
+    "frame_number": 31,
+    "timestamp": 7.566769361495972,
+    "frame_type": "main",
+    "fps": 30.67155152871319,
+    "frame_time_ms": 32.60350227355957,
+    "dt": 0.03260350227355957
+  },
+  {
+    "frame_number": 32,
+    "timestamp": 7.575758695602417,
+    "frame_type": "main",
+    "fps": 111.2429450456185,
+    "frame_time_ms": 8.989334106445312,
+    "dt": 0.008989334106445312
+  },
+  {
+    "frame_number": 33,
+    "timestamp": 7.6314537525177,
+    "frame_type": "main",
+    "fps": 17.954914769565328,
+    "frame_time_ms": 55.6950569152832,
+    "dt": 0.0556950569152832
+  },
+  {
+    "frame_number": 34,
+    "timestamp": 7.698488235473633,
+    "frame_type": "main",
+    "fps": 14.917695429341698,
+    "frame_time_ms": 67.03448295593262,
+    "dt": 0.06703448295593262
+  },
+  {
+    "frame_number": 35,
+    "timestamp": 7.715002775192261,
+    "frame_type": "main",
+    "fps": 60.55270186380239,
+    "frame_time_ms": 16.51453971862793,
+    "dt": 0.01651453971862793
+  },
+  {
+    "frame_number": 36,
+    "timestamp": 7.759081840515137,
+    "frame_type": "main",
+    "fps": 22.68650645550381,
+    "frame_time_ms": 44.07906532287598,
+    "dt": 0.04407906532287598
+  },
+  {
+    "frame_number": 37,
+    "timestamp": 7.76264500617981,
+    "frame_type": "main",
+    "fps": 280.6493141518903,
+    "frame_time_ms": 3.5631656646728516,
+    "dt": 0.0035631656646728516
+  },
+  {
+    "frame_number": 38,
+    "timestamp": 7.808281660079956,
+    "frame_type": "main",
+    "fps": 21.912211228018847,
+    "frame_time_ms": 45.636653900146484,
+    "dt": 0.045636653900146484
+  },
+  {
+    "frame_number": 39,
+    "timestamp": 7.818606376647949,
+    "frame_type": "main",
+    "fps": 96.85495901166148,
+    "frame_time_ms": 10.324716567993164,
+    "dt": 0.010324716567993164
+  },
+  {
+    "frame_number": 40,
+    "timestamp": 7.874094724655151,
+    "frame_type": "main",
+    "fps": 18.02180161986809,
+    "frame_time_ms": 55.48834800720215,
+    "dt": 0.05548834800720215
+  },
+  {
+    "frame_number": 41,
+    "timestamp": 7.9411985874176025,
+    "frame_type": "main",
+    "fps": 14.902271774428504,
+    "frame_time_ms": 67.10386276245117,
+    "dt": 0.06710386276245117
+  },
+  {
+    "frame_number": 42,
+    "timestamp": 7.958879470825195,
+    "frame_type": "main",
+    "fps": 56.558259954961635,
+    "frame_time_ms": 17.680883407592773,
+    "dt": 0.017680883407592773
+  },
+  {
+    "frame_number": 43,
+    "timestamp": 8.00216817855835,
+    "frame_type": "main",
+    "fps": 23.100712688498948,
+    "frame_time_ms": 43.2887077331543,
+    "dt": 0.0432887077331543
+  },
+  {
+    "frame_number": 44,
+    "timestamp": 8.01604700088501,
+    "frame_type": "main",
+    "fps": 72.05222290936577,
+    "frame_time_ms": 13.878822326660156,
+    "dt": 0.013878822326660156
+  },
+  {
+    "frame_number": 45,
+    "timestamp": 8.0471351146698,
+    "frame_type": "main",
+    "fps": 32.16663471198607,
+    "frame_time_ms": 31.08811378479004,
+    "dt": 0.03108811378479004
+  },
+  {
+    "frame_number": 46,
+    "timestamp": 8.058505058288574,
+    "frame_type": "main",
+    "fps": 87.95118371112835,
+    "frame_time_ms": 11.369943618774414,
+    "dt": 0.011369943618774414
+  },
+  {
+    "frame_number": 47,
+    "timestamp": 8.111170768737793,
+    "frame_type": "main",
+    "fps": 18.98768651311024,
+    "frame_time_ms": 52.66571044921875,
+    "dt": 0.05266571044921875
+  },
+  {
+    "frame_number": 48,
+    "timestamp": 8.179837465286255,
+    "frame_type": "main",
+    "fps": 14.563100458666222,
+    "frame_time_ms": 68.66669654846191,
+    "dt": 0.06866669654846191
+  },
+  {
+    "frame_number": 49,
+    "timestamp": 8.190258264541626,
+    "frame_type": "main",
+    "fps": 95.96192916628534,
+    "frame_time_ms": 10.420799255371094,
+    "dt": 0.010420799255371094
+  },
+  {
+    "frame_number": 50,
+    "timestamp": 8.241333723068237,
+    "frame_type": "main",
+    "fps": 19.578874646401463,
+    "frame_time_ms": 51.07545852661133,
+    "dt": 0.05107545852661133
+  },
+  {
+    "frame_number": 51,
+    "timestamp": 8.251568078994751,
+    "frame_type": "main",
+    "fps": 97.71010576340679,
+    "frame_time_ms": 10.234355926513672,
+    "dt": 0.010234355926513672
+  },
+  {
+    "frame_number": 52,
+    "timestamp": 8.287148714065552,
+    "frame_type": "main",
+    "fps": 28.10517569487255,
+    "frame_time_ms": 35.58063507080078,
+    "dt": 0.03558063507080078
+  },
+  {
+    "frame_number": 53,
+    "timestamp": 8.299980878829956,
+    "frame_type": "main",
+    "fps": 77.92917394374048,
+    "frame_time_ms": 12.832164764404297,
+    "dt": 0.012832164764404297
+  },
+  {
+    "frame_number": 54,
+    "timestamp": 8.3527352809906,
+    "frame_type": "main",
+    "fps": 18.955764050834283,
+    "frame_time_ms": 52.75440216064453,
+    "dt": 0.05275440216064453
+  },
+  {
+    "frame_number": 55,
+    "timestamp": 8.364909410476685,
+    "frame_type": "main",
+    "fps": 82.14139673338295,
+    "frame_time_ms": 12.174129486083984,
+    "dt": 0.012174129486083984
+  },
+  {
+    "frame_number": 56,
+    "timestamp": 8.417526483535767,
+    "frame_type": "main",
+    "fps": 19.005238069345513,
+    "frame_time_ms": 52.61707305908203,
+    "dt": 0.05261707305908203
+  },
+  {
+    "frame_number": 57,
+    "timestamp": 8.429322481155396,
+    "frame_type": "main",
+    "fps": 84.77451693750506,
+    "frame_time_ms": 11.795997619628906,
+    "dt": 0.011795997619628906
+  },
+  {
+    "frame_number": 58,
+    "timestamp": 8.483733892440796,
+    "frame_type": "main",
+    "fps": 18.37849775214926,
+    "frame_time_ms": 54.41141128540039,
+    "dt": 0.05441141128540039
+  },
+  {
+    "frame_number": 59,
+    "timestamp": 8.493833780288696,
+    "frame_type": "main",
+    "fps": 99.01100042490911,
+    "frame_time_ms": 10.09988784790039,
+    "dt": 0.01009988784790039
+  },
+  {
+    "frame_number": 60,
+    "timestamp": 8.52565050125122,
+    "frame_type": "main",
+    "fps": 31.430014462453823,
+    "frame_time_ms": 31.816720962524414,
+    "dt": 0.031816720962524414
+  },
+  {
+    "frame_number": 61,
+    "timestamp": 8.59770655632019,
+    "frame_type": "main",
+    "fps": 13.878084208784847,
+    "frame_time_ms": 72.05605506896973,
+    "dt": 0.07205605506896973
+  },
+  {
+    "frame_number": 62,
+    "timestamp": 8.608529806137085,
+    "frame_type": "main",
+    "fps": 92.39369107410344,
+    "frame_time_ms": 10.823249816894531,
+    "dt": 0.010823249816894531
+  },
+  {
+    "frame_number": 63,
+    "timestamp": 8.656877040863037,
+    "frame_type": "main",
+    "fps": 20.68370622783961,
+    "frame_time_ms": 48.34723472595215,
+    "dt": 0.04834723472595215
+  },
+  {
+    "frame_number": 64,
+    "timestamp": 8.668420553207397,
+    "frame_type": "main",
+    "fps": 86.6287461015759,
+    "frame_time_ms": 11.543512344360352,
+    "dt": 0.011543512344360352
+  },
+  {
+    "frame_number": 65,
+    "timestamp": 8.721411228179932,
+    "frame_type": "main",
+    "fps": 18.871244808984112,
+    "frame_time_ms": 52.99067497253418,
+    "dt": 0.05299067497253418
+  },
+  {
+    "frame_number": 66,
+    "timestamp": 8.7297523021698,
+    "frame_type": "main",
+    "fps": 119.88863798770902,
+    "frame_time_ms": 8.341073989868164,
+    "dt": 0.008341073989868164
+  },
+  {
+    "frame_number": 67,
+    "timestamp": 8.767463445663452,
+    "frame_type": "main",
+    "fps": 26.5173608476848,
+    "frame_time_ms": 37.711143493652344,
+    "dt": 0.037711143493652344
+  },
+  {
+    "frame_number": 68,
+    "timestamp": 8.778764247894287,
+    "frame_type": "main",
+    "fps": 88.48929302305956,
+    "frame_time_ms": 11.300802230834961,
+    "dt": 0.011300802230834961
+  },
+  {
+    "frame_number": 69,
+    "timestamp": 8.833823204040527,
+    "frame_type": "main",
+    "fps": 18.162349415850414,
+    "frame_time_ms": 55.058956146240234,
+    "dt": 0.055058956146240234
+  },
+  {
+    "frame_number": 70,
+    "timestamp": 8.896133184432983,
+    "frame_type": "main",
+    "fps": 16.048793366673426,
+    "frame_time_ms": 62.309980392456055,
+    "dt": 0.062309980392456055
+  },
+  {
+    "frame_number": 71,
+    "timestamp": 8.907510995864868,
+    "frame_type": "main",
+    "fps": 87.89036503080341,
+    "frame_time_ms": 11.377811431884766,
+    "dt": 0.011377811431884766
+  },
+  {
+    "frame_number": 72,
+    "timestamp": 8.960710048675537,
+    "frame_type": "main",
+    "fps": 18.79732715465664,
+    "frame_time_ms": 53.199052810668945,
+    "dt": 0.053199052810668945
+  },
+  {
+    "frame_number": 73,
+    "timestamp": 8.965961694717407,
+    "frame_type": "main",
+    "fps": 190.41648885458756,
+    "frame_time_ms": 5.251646041870117,
+    "dt": 0.005251646041870117
+  },
+  {
+    "frame_number": 74,
+    "timestamp": 9.007721424102783,
+    "frame_type": "main",
+    "fps": 23.946515332309467,
+    "frame_time_ms": 41.75972938537598,
+    "dt": 0.04175972938537598
+  },
+  {
+    "frame_number": 75,
+    "timestamp": 9.018873453140259,
+    "frame_type": "main",
+    "fps": 89.66978086584714,
+    "frame_time_ms": 11.152029037475586,
+    "dt": 0.011152029037475586
+  },
+  {
+    "frame_number": 76,
+    "timestamp": 9.071571826934814,
+    "frame_type": "main",
+    "fps": 18.975917623160342,
+    "frame_time_ms": 52.698373794555664,
+    "dt": 0.052698373794555664
+  },
+  {
+    "frame_number": 77,
+    "timestamp": 9.136383295059204,
+    "frame_type": "main",
+    "fps": 15.429368118629041,
+    "frame_time_ms": 64.81146812438965,
+    "dt": 0.06481146812438965
+  },
+  {
+    "frame_number": 78,
+    "timestamp": 9.147599697113037,
+    "frame_type": "main",
+    "fps": 89.15514932511425,
+    "frame_time_ms": 11.216402053833008,
+    "dt": 0.011216402053833008
+  },
+  {
+    "frame_number": 79,
+    "timestamp": 9.202762126922607,
+    "frame_type": "main",
+    "fps": 18.128280488226547,
+    "frame_time_ms": 55.16242980957031,
+    "dt": 0.05516242980957031
+  },
+  {
+    "frame_number": 80,
+    "timestamp": 9.213808298110962,
+    "frame_type": "main",
+    "fps": 90.52910578230558,
+    "frame_time_ms": 11.046171188354492,
+    "dt": 0.011046171188354492
+  },
+  {
+    "frame_number": 81,
+    "timestamp": 9.246916055679321,
+    "frame_type": "main",
+    "fps": 30.20440142873603,
+    "frame_time_ms": 33.107757568359375,
+    "dt": 0.033107757568359375
+  },
+  {
+    "frame_number": 82,
+    "timestamp": 9.250995874404907,
+    "frame_type": "main",
+    "fps": 245.10892940626462,
+    "frame_time_ms": 4.0798187255859375,
+    "dt": 0.0040798187255859375
+  },
+  {
+    "frame_number": 83,
+    "timestamp": 9.309809446334839,
+    "frame_type": "main",
+    "fps": 17.002878199463275,
+    "frame_time_ms": 58.81357192993164,
+    "dt": 0.05881357192993164
+  },
+  {
+    "frame_number": 84,
+    "timestamp": 9.380796194076538,
+    "frame_type": "main",
+    "fps": 14.08713642775576,
+    "frame_time_ms": 70.98674774169922,
+    "dt": 0.07098674774169922
+  },
+  {
+    "frame_number": 85,
+    "timestamp": 9.391324996948242,
+    "frame_type": "main",
+    "fps": 94.9775593849777,
+    "frame_time_ms": 10.528802871704102,
+    "dt": 0.010528802871704102
+  },
+  {
+    "frame_number": 86,
+    "timestamp": 9.439932584762573,
+    "frame_type": "main",
+    "fps": 20.572919681177193,
+    "frame_time_ms": 48.607587814331055,
+    "dt": 0.048607587814331055
+  },
+  {
+    "frame_number": 87,
+    "timestamp": 9.450782537460327,
+    "frame_type": "main",
+    "fps": 92.16630043069351,
+    "frame_time_ms": 10.849952697753906,
+    "dt": 0.010849952697753906
+  },
+  {
+    "frame_number": 88,
+    "timestamp": 9.487344741821289,
+    "frame_type": "main",
+    "fps": 27.350648503778864,
+    "frame_time_ms": 36.562204360961914,
+    "dt": 0.036562204360961914
+  },
+  {
+    "frame_number": 89,
+    "timestamp": 9.501160144805908,
+    "frame_type": "main",
+    "fps": 72.3829772546854,
+    "frame_time_ms": 13.81540298461914,
+    "dt": 0.01381540298461914
+  },
+  {
+    "frame_number": 90,
+    "timestamp": 9.553456544876099,
+    "frame_type": "main",
+    "fps": 19.121775086962668,
+    "frame_time_ms": 52.29640007019043,
+    "dt": 0.05229640007019043
+  },
+  {
+    "frame_number": 91,
+    "timestamp": 9.56557846069336,
+    "frame_type": "main",
+    "fps": 82.49521074680881,
+    "frame_time_ms": 12.121915817260742,
+    "dt": 0.012121915817260742
+  },
+  {
+    "frame_number": 92,
+    "timestamp": 9.615179061889648,
+    "frame_type": "main",
+    "fps": 20.161045952701404,
+    "frame_time_ms": 49.60060119628906,
+    "dt": 0.04960060119628906
+  },
+  {
+    "frame_number": 93,
+    "timestamp": 9.633479833602905,
+    "frame_type": "main",
+    "fps": 54.642504462017484,
+    "frame_time_ms": 18.300771713256836,
+    "dt": 0.018300771713256836
+  },
+  {
+    "frame_number": 94,
+    "timestamp": 9.679847717285156,
+    "frame_type": "main",
+    "fps": 21.56665175518431,
+    "frame_time_ms": 46.36788368225098,
+    "dt": 0.04636788368225098
+  },
+  {
+    "frame_number": 95,
+    "timestamp": 9.729325294494629,
+    "frame_type": "main",
+    "fps": 20.211175574873266,
+    "frame_time_ms": 49.477577209472656,
+    "dt": 0.049477577209472656
+  },
+  {
+    "frame_number": 96,
+    "timestamp": 9.7426176071167,
+    "frame_type": "main",
+    "fps": 75.23145358014062,
+    "frame_time_ms": 13.292312622070312,
+    "dt": 0.013292312622070312
+  },
+  {
+    "frame_number": 97,
+    "timestamp": 9.792412996292114,
+    "frame_type": "main",
+    "fps": 20.082180630766505,
+    "frame_time_ms": 49.79538917541504,
+    "dt": 0.04979538917541504
+  },
+  {
+    "frame_number": 98,
+    "timestamp": 9.80086374282837,
+    "frame_type": "main",
+    "fps": 118.33274086613062,
+    "frame_time_ms": 8.450746536254883,
+    "dt": 0.008450746536254883
+  },
+  {
+    "frame_number": 99,
+    "timestamp": 9.860199451446533,
+    "frame_type": "main",
+    "fps": 16.85325789964319,
+    "frame_time_ms": 59.33570861816406,
+    "dt": 0.05933570861816406
+  },
+  {
+    "frame_number": 100,
+    "timestamp": 9.8706693649292,
+    "frame_type": "main",
+    "fps": 95.51177301088491,
+    "frame_time_ms": 10.469913482666016,
+    "dt": 0.010469913482666016
+  },
+  {
+    "frame_number": 101,
+    "timestamp": 9.919706106185913,
+    "frame_type": "main",
+    "fps": 20.392872249908837,
+    "frame_time_ms": 49.03674125671387,
+    "dt": 0.04903674125671387
+  },
+  {
+    "frame_number": 102,
+    "timestamp": 9.932843685150146,
+    "frame_type": "main",
+    "fps": 76.11752536159555,
+    "frame_time_ms": 13.137578964233398,
+    "dt": 0.013137578964233398
+  },
+  {
+    "frame_number": 103,
+    "timestamp": 9.969469547271729,
+    "frame_type": "main",
+    "fps": 27.3031115740138,
+    "frame_time_ms": 36.62586212158203,
+    "dt": 0.03662586212158203
+  },
+  {
+    "frame_number": 104,
+    "timestamp": 9.982624769210815,
+    "frame_type": "main",
+    "fps": 76.01544121644888,
+    "frame_time_ms": 13.155221939086914,
+    "dt": 0.013155221939086914
+  },
+  {
+    "frame_number": 105,
+    "timestamp": 10.033216714859009,
+    "frame_type": "main",
+    "fps": 19.76599213941696,
+    "frame_time_ms": 50.59194564819336,
+    "dt": 0.05059194564819336
+  },
+  {
+    "frame_number": 106,
+    "timestamp": 10.098996877670288,
+    "frame_type": "main",
+    "fps": 15.20215148857203,
+    "frame_time_ms": 65.7801628112793,
+    "dt": 0.0657801628112793
+  },
+  {
+    "frame_number": 107,
+    "timestamp": 10.102843284606934,
+    "frame_type": "main",
+    "fps": 259.9828922085167,
+    "frame_time_ms": 3.846406936645508,
+    "dt": 0.003846406936645508
+  },
+  {
+    "frame_number": 108,
+    "timestamp": 10.1617112159729,
+    "frame_type": "main",
+    "fps": 16.987177514073956,
+    "frame_time_ms": 58.8679313659668,
+    "dt": 0.0588679313659668
+  },
+  {
+    "frame_number": 109,
+    "timestamp": 10.17352557182312,
+    "frame_type": "main",
+    "fps": 84.64278651141203,
+    "frame_time_ms": 11.814355850219727,
+    "dt": 0.011814355850219727
+  },
+  {
+    "frame_number": 110,
+    "timestamp": 10.207278490066528,
+    "frame_type": "main",
+    "fps": 29.627067881613335,
+    "frame_time_ms": 33.7529182434082,
+    "dt": 0.0337529182434082
+  },
+  {
+    "frame_number": 111,
+    "timestamp": 10.219249963760376,
+    "frame_type": "main",
+    "fps": 83.53190472397037,
+    "frame_time_ms": 11.971473693847656,
+    "dt": 0.011971473693847656
+  },
+  {
+    "frame_number": 112,
+    "timestamp": 10.271547079086304,
+    "frame_type": "main",
+    "fps": 19.12151356279918,
+    "frame_time_ms": 52.297115325927734,
+    "dt": 0.052297115325927734
+  },
+  {
+    "frame_number": 113,
+    "timestamp": 10.335911989212036,
+    "frame_type": "main",
+    "fps": 15.536415696791448,
+    "frame_time_ms": 64.36491012573242,
+    "dt": 0.06436491012573242
+  },
+  {
+    "frame_number": 114,
+    "timestamp": 10.347436666488647,
+    "frame_type": "main",
+    "fps": 86.77032562373289,
+    "frame_time_ms": 11.524677276611328,
+    "dt": 0.011524677276611328
+  },
+  {
+    "frame_number": 115,
+    "timestamp": 10.401588201522827,
+    "frame_type": "main",
+    "fps": 18.466697192772358,
+    "frame_time_ms": 54.15153503417969,
+    "dt": 0.05415153503417969
+  },
+  {
+    "frame_number": 116,
+    "timestamp": 10.41505479812622,
+    "frame_type": "main",
+    "fps": 74.25781208505214,
+    "frame_time_ms": 13.466596603393555,
+    "dt": 0.013466596603393555
+  },
+  {
+    "frame_number": 117,
+    "timestamp": 10.448967456817627,
+    "frame_type": "main",
+    "fps": 29.487514060742406,
+    "frame_time_ms": 33.91265869140625,
+    "dt": 0.03391265869140625
+  },
+  {
+    "frame_number": 118,
+    "timestamp": 10.459867715835571,
+    "frame_type": "main",
+    "fps": 91.7409392156434,
+    "frame_time_ms": 10.900259017944336,
+    "dt": 0.010900259017944336
+  },
+  {
+    "frame_number": 119,
+    "timestamp": 10.512082815170288,
+    "frame_type": "main",
+    "fps": 19.151548359405677,
+    "frame_time_ms": 52.2150993347168,
+    "dt": 0.0522150993347168
+  },
+  {
+    "frame_number": 120,
+    "timestamp": 10.57987356185913,
+    "frame_type": "main",
+    "fps": 14.75127578384652,
+    "frame_time_ms": 67.79074668884277,
+    "dt": 0.06779074668884277
+  },
+  {
+    "frame_number": 121,
+    "timestamp": 10.590395212173462,
+    "frame_type": "main",
+    "fps": 95.04212458362602,
+    "frame_time_ms": 10.521650314331055,
+    "dt": 0.010521650314331055
+  },
+  {
+    "frame_number": 122,
+    "timestamp": 10.640486717224121,
+    "frame_type": "main",
+    "fps": 19.9634648427646,
+    "frame_time_ms": 50.09150505065918,
+    "dt": 0.05009150505065918
+  },
+  {
+    "frame_number": 123,
+    "timestamp": 10.65183973312378,
+    "frame_type": "main",
+    "fps": 88.08232181107985,
+    "frame_time_ms": 11.353015899658203,
+    "dt": 0.011353015899658203
+  },
+  {
+    "frame_number": 124,
+    "timestamp": 10.687492847442627,
+    "frame_type": "main",
+    "fps": 28.04804065801792,
+    "frame_time_ms": 35.653114318847656,
+    "dt": 0.035653114318847656
+  },
+  {
+    "frame_number": 125,
+    "timestamp": 10.697503566741943,
+    "frame_type": "main",
+    "fps": 99.89292178717729,
+    "frame_time_ms": 10.010719299316406,
+    "dt": 0.010010719299316406
+  },
+  {
+    "frame_number": 126,
+    "timestamp": 10.752129316329956,
+    "frame_type": "main",
+    "fps": 18.306384947428608,
+    "frame_time_ms": 54.625749588012695,
+    "dt": 0.054625749588012695
+  },
+  {
+    "frame_number": 127,
+    "timestamp": 10.76318907737732,
+    "frame_type": "main",
+    "fps": 90.41786668966112,
+    "frame_time_ms": 11.059761047363281,
+    "dt": 0.011059761047363281
+  },
+  {
+    "frame_number": 128,
+    "timestamp": 10.81672191619873,
+    "frame_type": "main",
+    "fps": 18.680122743650156,
+    "frame_time_ms": 53.53283882141113,
+    "dt": 0.05353283882141113
+  },
+  {
+    "frame_number": 129,
+    "timestamp": 10.831615924835205,
+    "frame_type": "main",
+    "fps": 67.14109172402753,
+    "frame_time_ms": 14.89400863647461,
+    "dt": 0.01489400863647461
+  },
+  {
+    "frame_number": 130,
+    "timestamp": 10.87948989868164,
+    "frame_type": "main",
+    "fps": 20.888176177053555,
+    "frame_time_ms": 47.87397384643555,
+    "dt": 0.04787397384643555
+  },
+  {
+    "frame_number": 131,
+    "timestamp": 10.90234112739563,
+    "frame_type": "main",
+    "fps": 43.76132296937764,
+    "frame_time_ms": 22.851228713989258,
+    "dt": 0.022851228713989258
+  },
+  {
+    "frame_number": 132,
+    "timestamp": 10.9259352684021,
+    "frame_type": "main",
+    "fps": 42.383403563019776,
+    "frame_time_ms": 23.594141006469727,
+    "dt": 0.023594141006469727
+  },
+  {
+    "frame_number": 133,
+    "timestamp": 10.994045734405518,
+    "frame_type": "main",
+    "fps": 14.682031392206556,
+    "frame_time_ms": 68.11046600341797,
+    "dt": 0.06811046600341797
+  },
+  {
+    "frame_number": 134,
+    "timestamp": 11.009313344955444,
+    "frame_type": "main",
+    "fps": 65.49813389134407,
+    "frame_time_ms": 15.267610549926758,
+    "dt": 0.015267610549926758
+  },
+  {
+    "frame_number": 135,
+    "timestamp": 11.056155443191528,
+    "frame_type": "main",
+    "fps": 21.34831780933476,
+    "frame_time_ms": 46.842098236083984,
+    "dt": 0.046842098236083984
+  },
+  {
+    "frame_number": 136,
+    "timestamp": 11.06727385520935,
+    "frame_type": "main",
+    "fps": 89.9409014881846,
+    "frame_time_ms": 11.118412017822266,
+    "dt": 0.011118412017822266
+  },
+  {
+    "frame_number": 137,
+    "timestamp": 11.120805978775024,
+    "frame_type": "main",
+    "fps": 18.680372333318488,
+    "frame_time_ms": 53.53212356567383,
+    "dt": 0.05353212356567383
+  },
+  {
+    "frame_number": 138,
+    "timestamp": 11.13391375541687,
+    "frame_type": "main",
+    "fps": 76.29058896285787,
+    "frame_time_ms": 13.107776641845703,
+    "dt": 0.013107776641845703
+  },
+  {
+    "frame_number": 139,
+    "timestamp": 11.167763710021973,
+    "frame_type": "main",
+    "fps": 29.542137106714467,
+    "frame_time_ms": 33.84995460510254,
+    "dt": 0.03384995460510254
+  },
+  {
+    "frame_number": 140,
+    "timestamp": 11.179333209991455,
+    "frame_type": "main",
+    "fps": 86.43415900754235,
+    "frame_time_ms": 11.569499969482422,
+    "dt": 0.011569499969482422
+  },
+  {
+    "frame_number": 141,
+    "timestamp": 11.232866048812866,
+    "frame_type": "main",
+    "fps": 18.680122743650156,
+    "frame_time_ms": 53.53283882141113,
+    "dt": 0.05353283882141113
+  },
+  {
+    "frame_number": 142,
+    "timestamp": 11.30146050453186,
+    "frame_type": "main",
+    "fps": 14.57843771071858,
+    "frame_time_ms": 68.59445571899414,
+    "dt": 0.06859445571899414
+  },
+  {
+    "frame_number": 143,
+    "timestamp": 11.31244421005249,
+    "frame_type": "main",
+    "fps": 91.0439558054223,
+    "frame_time_ms": 10.983705520629883,
+    "dt": 0.010983705520629883
+  },
+  {
+    "frame_number": 144,
+    "timestamp": 11.359660148620605,
+    "frame_type": "main",
+    "fps": 21.179288823357133,
+    "frame_time_ms": 47.215938568115234,
+    "dt": 0.047215938568115234
+  },
+  {
+    "frame_number": 145,
+    "timestamp": 11.370821237564087,
+    "frame_type": "main",
+    "fps": 89.59699228846688,
+    "frame_time_ms": 11.161088943481445,
+    "dt": 0.011161088943481445
+  },
+  {
+    "frame_number": 146,
+    "timestamp": 11.407599687576294,
+    "frame_type": "main",
+    "fps": 27.189835342927523,
+    "frame_time_ms": 36.77845001220703,
+    "dt": 0.03677845001220703
+  },
+  {
+    "frame_number": 147,
+    "timestamp": 11.420959949493408,
+    "frame_type": "main",
+    "fps": 74.84883202169995,
+    "frame_time_ms": 13.360261917114258,
+    "dt": 0.013360261917114258
+  },
+  {
+    "frame_number": 148,
+    "timestamp": 11.473440408706665,
+    "frame_type": "main",
+    "fps": 19.054711315243118,
+    "frame_time_ms": 52.480459213256836,
+    "dt": 0.052480459213256836
+  },
+  {
+    "frame_number": 149,
+    "timestamp": 11.538871765136719,
+    "frame_type": "main",
+    "fps": 15.283192257660172,
+    "frame_time_ms": 65.43135643005371,
+    "dt": 0.06543135643005371
+  },
+  {
+    "frame_number": 150,
+    "timestamp": 11.552145957946777,
+    "frame_type": "main",
+    "fps": 75.33414756807242,
+    "frame_time_ms": 13.274192810058594,
+    "dt": 0.013274192810058594
+  },
+  {
+    "frame_number": 151,
+    "timestamp": 11.603574514389038,
+    "frame_type": "main",
+    "fps": 19.44445011056665,
+    "frame_time_ms": 51.42855644226074,
+    "dt": 0.05142855644226074
+  },
+  {
+    "frame_number": 152,
+    "timestamp": 11.615482091903687,
+    "frame_type": "main",
+    "fps": 83.9801377542848,
+    "frame_time_ms": 11.907577514648438,
+    "dt": 0.011907577514648438
+  },
+  {
+    "frame_number": 153,
+    "timestamp": 11.64747428894043,
+    "frame_type": "main",
+    "fps": 31.25762193985915,
+    "frame_time_ms": 31.992197036743164,
+    "dt": 0.031992197036743164
+  },
+  {
+    "frame_number": 154,
+    "timestamp": 11.651273727416992,
+    "frame_type": "main",
+    "fps": 263.19678714859435,
+    "frame_time_ms": 3.7994384765625,
+    "dt": 0.0037994384765625
+  },
+  {
+    "frame_number": 155,
+    "timestamp": 11.713977098464966,
+    "frame_type": "main",
+    "fps": 15.948105871930098,
+    "frame_time_ms": 62.70337104797363,
+    "dt": 0.06270337104797363
+  },
+  {
+    "frame_number": 156,
+    "timestamp": 11.780102491378784,
+    "frame_type": "main",
+    "fps": 15.122783486569316,
+    "frame_time_ms": 66.12539291381836,
+    "dt": 0.06612539291381836
+  },
+  {
+    "frame_number": 157,
+    "timestamp": 11.790484428405762,
+    "frame_type": "main",
+    "fps": 96.32113905155586,
+    "frame_time_ms": 10.381937026977539,
+    "dt": 0.010381937026977539
+  },
+  {
+    "frame_number": 158,
+    "timestamp": 11.839876651763916,
+    "frame_type": "main",
+    "fps": 20.246102159620786,
+    "frame_time_ms": 49.3922233581543,
+    "dt": 0.0493922233581543
+  },
+  {
+    "frame_number": 159,
+    "timestamp": 11.853686571121216,
+    "frame_type": "main",
+    "fps": 72.41171900626694,
+    "frame_time_ms": 13.809919357299805,
+    "dt": 0.013809919357299805
+  },
+  {
+    "frame_number": 160,
+    "timestamp": 11.888931035995483,
+    "frame_type": "main",
+    "fps": 28.37324963132331,
+    "frame_time_ms": 35.24446487426758,
+    "dt": 0.03524446487426758
+  },
+  {
+    "frame_number": 161,
+    "timestamp": 11.903508424758911,
+    "frame_type": "main",
+    "fps": 68.5993915802558,
+    "frame_time_ms": 14.577388763427734,
+    "dt": 0.014577388763427734
+  },
+  {
+    "frame_number": 162,
+    "timestamp": 11.952598571777344,
+    "frame_type": "main",
+    "fps": 20.3706865987693,
+    "frame_time_ms": 49.09014701843262,
+    "dt": 0.04909014701843262
+  },
+  {
+    "frame_number": 163,
+    "timestamp": 11.958178997039795,
+    "frame_type": "main",
+    "fps": 179.19781252670256,
+    "frame_time_ms": 5.580425262451172,
+    "dt": 0.005580425262451172
+  },
+  {
+    "frame_number": 164,
+    "timestamp": 12.017214298248291,
+    "frame_type": "main",
+    "fps": 16.939017495113323,
+    "frame_time_ms": 59.035301208496094,
+    "dt": 0.059035301208496094
+  },
+  {
+    "frame_number": 165,
+    "timestamp": 12.027092456817627,
+    "frame_type": "main",
+    "fps": 101.23344274956555,
+    "frame_time_ms": 9.878158569335938,
+    "dt": 0.009878158569335938
+  },
+  {
+    "frame_number": 166,
+    "timestamp": 12.080606698989868,
+    "frame_type": "main",
+    "fps": 18.686614243389542,
+    "frame_time_ms": 53.51424217224121,
+    "dt": 0.05351424217224121
+  },
+  {
+    "frame_number": 167,
+    "timestamp": 12.12765645980835,
+    "frame_type": "main",
+    "fps": 21.254093168677567,
+    "frame_time_ms": 47.049760818481445,
+    "dt": 0.047049760818481445
+  },
+  {
+    "frame_number": 168,
+    "timestamp": 12.13615369796753,
+    "frame_type": "main",
+    "fps": 117.68529741863075,
+    "frame_time_ms": 8.497238159179688,
+    "dt": 0.008497238159179688
+  },
+  {
+    "frame_number": 169,
+    "timestamp": 12.19420862197876,
+    "frame_type": "main",
+    "fps": 17.225067761806983,
+    "frame_time_ms": 58.05492401123047,
+    "dt": 0.05805492401123047
+  },
+  {
+    "frame_number": 170,
+    "timestamp": 12.207244396209717,
+    "frame_type": "main",
+    "fps": 76.71197600409687,
+    "frame_time_ms": 13.035774230957031,
+    "dt": 0.013035774230957031
+  },
+  {
+    "frame_number": 171,
+    "timestamp": 12.256712198257446,
+    "frame_type": "main",
+    "fps": 20.215169435568214,
+    "frame_time_ms": 49.46780204772949,
+    "dt": 0.04946780204772949
+  },
+  {
+    "frame_number": 172,
+    "timestamp": 12.268892765045166,
+    "frame_type": "main",
+    "fps": 82.09798586779932,
+    "frame_time_ms": 12.180566787719727,
+    "dt": 0.012180566787719727
+  },
+  {
+    "frame_number": 173,
+    "timestamp": 12.319589376449585,
+    "frame_type": "main",
+    "fps": 19.725184234164328,
+    "frame_time_ms": 50.696611404418945,
+    "dt": 0.050696611404418945
+  },
+  {
+    "frame_number": 174,
+    "timestamp": 12.33117127418518,
+    "frame_type": "main",
+    "fps": 86.34163613158219,
+    "frame_time_ms": 11.581897735595703,
+    "dt": 0.011581897735595703
+  },
+  {
+    "frame_number": 175,
+    "timestamp": 12.369178056716919,
+    "frame_type": "main",
+    "fps": 26.311093267759013,
+    "frame_time_ms": 38.00678253173828,
+    "dt": 0.03800678253173828
+  },
+  {
+    "frame_number": 176,
+    "timestamp": 12.38002324104309,
+    "frame_type": "main",
+    "fps": 92.20682377769961,
+    "frame_time_ms": 10.845184326171875,
+    "dt": 0.010845184326171875
+  },
+  {
+    "frame_number": 177,
+    "timestamp": 12.434873580932617,
+    "frame_type": "main",
+    "fps": 18.23142759031379,
+    "frame_time_ms": 54.85033988952637,
+    "dt": 0.05485033988952637
+  },
+  {
+    "frame_number": 178,
+    "timestamp": 12.498326778411865,
+    "frame_type": "main",
+    "fps": 15.759647105680425,
+    "frame_time_ms": 63.45319747924805,
+    "dt": 0.06345319747924805
+  },
+  {
+    "frame_number": 179,
+    "timestamp": 12.512079000473022,
+    "frame_type": "main",
+    "fps": 72.71552157556215,
+    "frame_time_ms": 13.752222061157227,
+    "dt": 0.013752222061157227
+  },
+  {
+    "frame_number": 180,
+    "timestamp": 12.560717821121216,
+    "frame_type": "main",
+    "fps": 20.559709028165837,
+    "frame_time_ms": 48.63882064819336,
+    "dt": 0.04863882064819336
+  },
+  {
+    "frame_number": 181,
+    "timestamp": 12.571213960647583,
+    "frame_type": "main",
+    "fps": 95.27312375068145,
+    "frame_time_ms": 10.496139526367188,
+    "dt": 0.010496139526367188
+  },
+  {
+    "frame_number": 182,
+    "timestamp": 12.60950756072998,
+    "frame_type": "main",
+    "fps": 26.114024219406655,
+    "frame_time_ms": 38.29360008239746,
+    "dt": 0.03829360008239746
+  },
+  {
+    "frame_number": 183,
+    "timestamp": 12.622612714767456,
+    "frame_type": "main",
+    "fps": 76.30585624101734,
+    "frame_time_ms": 13.105154037475586,
+    "dt": 0.013105154037475586
+  },
+  {
+    "frame_number": 184,
+    "timestamp": 12.672342300415039,
+    "frame_type": "main",
+    "fps": 20.10875391334781,
+    "frame_time_ms": 49.72958564758301,
+    "dt": 0.04972958564758301
+  },
+  {
+    "frame_number": 185,
+    "timestamp": 12.739567756652832,
+    "frame_type": "main",
+    "fps": 14.875317416407768,
+    "frame_time_ms": 67.22545623779297,
+    "dt": 0.06722545623779297
+  },
+  {
+    "frame_number": 186,
+    "timestamp": 12.751068115234375,
+    "frame_type": "main",
+    "fps": 86.95381043204246,
+    "frame_time_ms": 11.500358581542969,
+    "dt": 0.011500358581542969
+  },
+  {
+    "frame_number": 187,
+    "timestamp": 12.802261590957642,
+    "frame_type": "main",
+    "fps": 19.533739131244733,
+    "frame_time_ms": 51.1934757232666,
+    "dt": 0.0511934757232666
+  },
+  {
+    "frame_number": 188,
+    "timestamp": 12.814364910125732,
+    "frame_type": "main",
+    "fps": 82.62196395154142,
+    "frame_time_ms": 12.10331916809082,
+    "dt": 0.01210331916809082
+  },
+  {
+    "frame_number": 189,
+    "timestamp": 12.847922563552856,
+    "frame_type": "main",
+    "fps": 29.79946146030934,
+    "frame_time_ms": 33.55765342712402,
+    "dt": 0.03355765342712402
+  },
+  {
+    "frame_number": 190,
+    "timestamp": 12.85922884941101,
+    "frame_type": "main",
+    "fps": 88.44637510016447,
+    "frame_time_ms": 11.306285858154297,
+    "dt": 0.011306285858154297
+  },
+  {
+    "frame_number": 191,
+    "timestamp": 12.913297653198242,
+    "frame_type": "main",
+    "fps": 18.494953280918594,
+    "frame_time_ms": 54.068803787231445,
+    "dt": 0.054068803787231445
+  },
+  {
+    "frame_number": 192,
+    "timestamp": 12.98049259185791,
+    "frame_type": "main",
+    "fps": 14.882073262464695,
+    "frame_time_ms": 67.19493865966797,
+    "dt": 0.06719493865966797
+  },
+  {
+    "frame_number": 193,
+    "timestamp": 12.990947484970093,
+    "frame_type": "main",
+    "fps": 95.64899318145538,
+    "frame_time_ms": 10.454893112182617,
+    "dt": 0.010454893112182617
+  },
+  {
+    "frame_number": 194,
+    "timestamp": 13.041107177734375,
+    "frame_type": "main",
+    "fps": 19.936326259001355,
+    "frame_time_ms": 50.15969276428223,
+    "dt": 0.05015969276428223
+  },
+  {
+    "frame_number": 195,
+    "timestamp": 13.053650379180908,
+    "frame_type": "main",
+    "fps": 79.72446302984224,
+    "frame_time_ms": 12.543201446533203,
+    "dt": 0.012543201446533203
+  },
+  {
+    "frame_number": 196,
+    "timestamp": 13.086682081222534,
+    "frame_type": "main",
+    "fps": 30.273947093002274,
+    "frame_time_ms": 33.03170204162598,
+    "dt": 0.03303170204162598
+  },
+  {
+    "frame_number": 197,
+    "timestamp": 13.097754001617432,
+    "frame_type": "main",
+    "fps": 90.31856844462628,
+    "frame_time_ms": 11.071920394897461,
+    "dt": 0.011071920394897461
+  },
+  {
+    "frame_number": 198,
+    "timestamp": 13.15281081199646,
+    "frame_type": "main",
+    "fps": 18.1630572696763,
+    "frame_time_ms": 55.05681037902832,
+    "dt": 0.05505681037902832
+  },
+  {
+    "frame_number": 199,
+    "timestamp": 13.166474103927612,
+    "frame_type": "main",
+    "fps": 73.18880435541286,
+    "frame_time_ms": 13.663291931152344,
+    "dt": 0.013663291931152344
+  },
+  {
+    "frame_number": 200,
+    "timestamp": 13.215916633605957,
+    "frame_type": "main",
+    "fps": 20.225502345968934,
+    "frame_time_ms": 49.44252967834473,
+    "dt": 0.04944252967834473
+  },
+  {
+    "frame_number": 201,
+    "timestamp": 13.229632139205933,
+    "frame_type": "main",
+    "fps": 72.91018130616928,
+    "frame_time_ms": 13.715505599975586,
+    "dt": 0.013715505599975586
+  },
+  {
+    "frame_number": 202,
+    "timestamp": 13.28000807762146,
+    "frame_type": "main",
+    "fps": 19.850746833765594,
+    "frame_time_ms": 50.375938415527344,
+    "dt": 0.050375938415527344
+  },
+  {
+    "frame_number": 203,
+    "timestamp": 13.292394161224365,
+    "frame_type": "main",
+    "fps": 80.7357702450386,
+    "frame_time_ms": 12.386083602905273,
+    "dt": 0.012386083602905273
+  },
+  {
+    "frame_number": 204,
+    "timestamp": 13.329468488693237,
+    "frame_type": "main",
+    "fps": 26.972842618375445,
+    "frame_time_ms": 37.07432746887207,
+    "dt": 0.03707432746887207
+  },
+  {
+    "frame_number": 205,
+    "timestamp": 13.395628690719604,
+    "frame_type": "main",
+    "fps": 15.114826880387465,
+    "frame_time_ms": 66.16020202636719,
+    "dt": 0.06616020202636719
+  },
+  {
+    "frame_number": 206,
+    "timestamp": 13.406466484069824,
+    "frame_type": "main",
+    "fps": 92.26970543590646,
+    "frame_time_ms": 10.837793350219727,
+    "dt": 0.010837793350219727
+  },
+  {
+    "frame_number": 207,
+    "timestamp": 13.457207202911377,
+    "frame_type": "main",
+    "fps": 19.708037702869063,
+    "frame_time_ms": 50.740718841552734,
+    "dt": 0.050740718841552734
+  },
+  {
+    "frame_number": 208,
+    "timestamp": 13.468123197555542,
+    "frame_type": "main",
+    "fps": 91.60869280331987,
+    "frame_time_ms": 10.915994644165039,
+    "dt": 0.010915994644165039
+  },
+  {
+    "frame_number": 209,
+    "timestamp": 13.52140760421753,
+    "frame_type": "main",
+    "fps": 18.76721657695388,
+    "frame_time_ms": 53.284406661987305,
+    "dt": 0.053284406661987305
+  },
+  {
+    "frame_number": 210,
+    "timestamp": 13.53261661529541,
+    "frame_type": "main",
+    "fps": 89.21393627430128,
+    "frame_time_ms": 11.20901107788086,
+    "dt": 0.01120901107788086
+  },
+  {
+    "frame_number": 211,
+    "timestamp": 13.567581176757812,
+    "frame_type": "main",
+    "fps": 28.60038731145842,
+    "frame_time_ms": 34.964561462402344,
+    "dt": 0.034964561462402344
+  },
+  {
+    "frame_number": 212,
+    "timestamp": 13.584492921829224,
+    "frame_type": "main",
+    "fps": 59.13050343281688,
+    "frame_time_ms": 16.911745071411133,
+    "dt": 0.016911745071411133
+  },
+  {
+    "frame_number": 213,
+    "timestamp": 13.631530523300171,
+    "frame_type": "main",
+    "fps": 21.259587409397334,
+    "frame_time_ms": 47.037601470947266,
+    "dt": 0.047037601470947266
+  },
+  {
+    "frame_number": 214,
+    "timestamp": 13.699127435684204,
+    "frame_type": "main",
+    "fps": 14.793575101755772,
+    "frame_time_ms": 67.5969123840332,
+    "dt": 0.0675969123840332
+  },
+  {
+    "frame_number": 215,
+    "timestamp": 13.711275100708008,
+    "frame_type": "main",
+    "fps": 82.32034700005887,
+    "frame_time_ms": 12.147665023803711,
+    "dt": 0.012147665023803711
+  },
+  {
+    "frame_number": 216,
+    "timestamp": 13.762710332870483,
+    "frame_type": "main",
+    "fps": 19.44192643752752,
+    "frame_time_ms": 51.435232162475586,
+    "dt": 0.051435232162475586
+  },
+  {
+    "frame_number": 217,
+    "timestamp": 13.777137041091919,
+    "frame_type": "main",
+    "fps": 69.31588167245083,
+    "frame_time_ms": 14.426708221435547,
+    "dt": 0.014426708221435547
+  },
+  {
+    "frame_number": 218,
+    "timestamp": 13.809301137924194,
+    "frame_type": "main",
+    "fps": 31.090566765006745,
+    "frame_time_ms": 32.16409683227539,
+    "dt": 0.03216409683227539
+  },
+  {
+    "frame_number": 219,
+    "timestamp": 13.829810857772827,
+    "frame_type": "main",
+    "fps": 48.757370036268945,
+    "frame_time_ms": 20.509719848632812,
+    "dt": 0.020509719848632812
+  },
+  {
+    "frame_number": 220,
+    "timestamp": 13.872796058654785,
+    "frame_type": "main",
+    "fps": 23.263820558757136,
+    "frame_time_ms": 42.98520088195801,
+    "dt": 0.04298520088195801
+  },
+  {
+    "frame_number": 221,
+    "timestamp": 13.938350200653076,
+    "frame_type": "main",
+    "fps": 15.25456621834925,
+    "frame_time_ms": 65.55414199829102,
+    "dt": 0.06555414199829102
+  },
+  {
+    "frame_number": 222,
+    "timestamp": 13.952317237854004,
+    "frame_type": "main",
+    "fps": 71.59714588098733,
+    "frame_time_ms": 13.967037200927734,
+    "dt": 0.013967037200927734
+  },
+  {
+    "frame_number": 223,
+    "timestamp": 14.002000093460083,
+    "frame_type": "main",
+    "fps": 20.127667538450464,
+    "frame_time_ms": 49.6828556060791,
+    "dt": 0.0496828556060791
+  },
+  {
+    "frame_number": 224,
+    "timestamp": 14.015916585922241,
+    "frame_type": "main",
+    "fps": 71.85718691108445,
+    "frame_time_ms": 13.916492462158203,
+    "dt": 0.013916492462158203
+  },
+  {
+    "frame_number": 225,
+    "timestamp": 14.05415153503418,
+    "frame_type": "main",
+    "fps": 26.15408214804607,
+    "frame_time_ms": 38.23494911193848,
+    "dt": 0.03823494911193848
+  },
+  {
+    "frame_number": 226,
+    "timestamp": 14.058860063552856,
+    "frame_type": "main",
+    "fps": 212.38057623170795,
+    "frame_time_ms": 4.708528518676758,
+    "dt": 0.004708528518676758
+  },
+  {
+    "frame_number": 227,
+    "timestamp": 14.110140562057495,
+    "frame_type": "main",
+    "fps": 19.50059046148982,
+    "frame_time_ms": 51.28049850463867,
+    "dt": 0.05128049850463867
+  },
+  {
+    "frame_number": 228,
+    "timestamp": 14.174880027770996,
+    "frame_type": "main",
+    "fps": 15.446528465733952,
+    "frame_time_ms": 64.73946571350098,
+    "dt": 0.06473946571350098
+  },
+  {
+    "frame_number": 229,
+    "timestamp": 14.185217380523682,
+    "frame_type": "main",
+    "fps": 96.7365653397297,
+    "frame_time_ms": 10.337352752685547,
+    "dt": 0.010337352752685547
+  },
+  {
+    "frame_number": 230,
+    "timestamp": 14.241995096206665,
+    "frame_type": "main",
+    "fps": 17.61254372372902,
+    "frame_time_ms": 56.7777156829834,
+    "dt": 0.0567777156829834
+  },
+  {
+    "frame_number": 231,
+    "timestamp": 14.254066705703735,
+    "frame_type": "main",
+    "fps": 82.83899510191183,
+    "frame_time_ms": 12.071609497070312,
+    "dt": 0.012071609497070312
+  },
+  {
+    "frame_number": 232,
+    "timestamp": 14.28763461112976,
+    "frame_type": "main",
+    "fps": 29.790360384675484,
+    "frame_time_ms": 33.56790542602539,
+    "dt": 0.03356790542602539
+  },
+  {
+    "frame_number": 233,
+    "timestamp": 14.297986268997192,
+    "frame_type": "main",
+    "fps": 96.60288359666498,
+    "frame_time_ms": 10.35165786743164,
+    "dt": 0.01035165786743164
+  },
+  {
+    "frame_number": 234,
+    "timestamp": 14.356951713562012,
+    "frame_type": "main",
+    "fps": 16.95908523000659,
+    "frame_time_ms": 58.965444564819336,
+    "dt": 0.058965444564819336
+  },
+  {
+    "frame_number": 235,
+    "timestamp": 14.361029624938965,
+    "frame_type": "main",
+    "fps": 245.22357343311506,
+    "frame_time_ms": 4.077911376953125,
+    "dt": 0.004077911376953125
+  },
+  {
+    "frame_number": 236,
+    "timestamp": 14.415802001953125,
+    "frame_type": "main",
+    "fps": 18.257378162380512,
+    "frame_time_ms": 54.772377014160156,
+    "dt": 0.054772377014160156
+  },
+  {
+    "frame_number": 237,
+    "timestamp": 14.42695164680481,
+    "frame_type": "main",
+    "fps": 89.68895541537475,
+    "frame_time_ms": 11.14964485168457,
+    "dt": 0.01114964485168457
+  },
+  {
+    "frame_number": 238,
+    "timestamp": 14.480618476867676,
+    "frame_type": "main",
+    "fps": 18.633483640240787,
+    "frame_time_ms": 53.66683006286621,
+    "dt": 0.05366683006286621
+  },
+  {
+    "frame_number": 239,
+    "timestamp": 14.527024507522583,
+    "frame_type": "main",
+    "fps": 21.548923402571916,
+    "frame_time_ms": 46.40603065490723,
+    "dt": 0.04640603065490723
+  },
+  {
+    "frame_number": 240,
+    "timestamp": 14.542521953582764,
+    "frame_type": "main",
+    "fps": 64.5267611267519,
+    "frame_time_ms": 15.497446060180664,
+    "dt": 0.015497446060180664
+  },
+  {
+    "frame_number": 241,
+    "timestamp": 14.593318700790405,
+    "frame_type": "main",
+    "fps": 19.686299910352627,
+    "frame_time_ms": 50.7967472076416,
+    "dt": 0.0507967472076416
+  },
+  {
+    "frame_number": 242,
+    "timestamp": 14.605003356933594,
+    "frame_type": "main",
+    "fps": 85.58232161439736,
+    "frame_time_ms": 11.684656143188477,
+    "dt": 0.011684656143188477
+  },
+  {
+    "frame_number": 243,
+    "timestamp": 14.656201124191284,
+    "frame_type": "main",
+    "fps": 19.532101760742112,
+    "frame_time_ms": 51.19776725769043,
+    "dt": 0.05119776725769043
+  },
+  {
+    "frame_number": 244,
+    "timestamp": 14.667908191680908,
+    "frame_type": "main",
+    "fps": 85.41848766877787,
+    "frame_time_ms": 11.707067489624023,
+    "dt": 0.011707067489624023
+  },
+  {
+    "frame_number": 245,
+    "timestamp": 14.71992540359497,
+    "frame_type": "main",
+    "fps": 19.224405984159578,
+    "frame_time_ms": 52.0172119140625,
+    "dt": 0.0520172119140625
+  },
+  {
+    "frame_number": 246,
+    "timestamp": 14.734053134918213,
+    "frame_type": "main",
+    "fps": 70.78277305251788,
+    "frame_time_ms": 14.127731323242188,
+    "dt": 0.014127731323242188
+  },
+  {
+    "frame_number": 247,
+    "timestamp": 14.768251419067383,
+    "frame_type": "main",
+    "fps": 29.24123314602825,
+    "frame_time_ms": 34.19828414916992,
+    "dt": 0.03419828414916992
+  },
+  {
+    "frame_number": 248,
+    "timestamp": 14.779502391815186,
+    "frame_type": "main",
+    "fps": 88.88120364484001,
+    "frame_time_ms": 11.250972747802734,
+    "dt": 0.011250972747802734
+  },
+  {
+    "frame_number": 249,
+    "timestamp": 14.831182479858398,
+    "frame_type": "main",
+    "fps": 19.34981223646211,
+    "frame_time_ms": 51.68008804321289,
+    "dt": 0.05168008804321289
+  },
+  {
+    "frame_number": 250,
+    "timestamp": 14.90032958984375,
+    "frame_type": "main",
+    "fps": 14.46192039279508,
+    "frame_time_ms": 69.14710998535156,
+    "dt": 0.06914710998535156
+  },
+  {
+    "frame_number": 251,
+    "timestamp": 14.912153244018555,
+    "frame_type": "main",
+    "fps": 84.57622197128569,
+    "frame_time_ms": 11.823654174804688,
+    "dt": 0.011823654174804688
+  },
+  {
+    "frame_number": 252,
+    "timestamp": 14.96212124824524,
+    "frame_type": "main",
+    "fps": 20.01280650440641,
+    "frame_time_ms": 49.96800422668457,
+    "dt": 0.04996800422668457
+  },
+  {
+    "frame_number": 253,
+    "timestamp": 14.972293615341187,
+    "frame_type": "main",
+    "fps": 98.30553602400038,
+    "frame_time_ms": 10.172367095947266,
+    "dt": 0.010172367095947266
+  },
+  {
+    "frame_number": 254,
+    "timestamp": 15.00993824005127,
+    "frame_type": "main",
+    "fps": 26.564217539726272,
+    "frame_time_ms": 37.64462471008301,
+    "dt": 0.03764462471008301
+  },
+  {
+    "frame_number": 255,
+    "timestamp": 15.018839359283447,
+    "frame_type": "main",
+    "fps": 112.34542240317137,
+    "frame_time_ms": 8.901119232177734,
+    "dt": 0.008901119232177734
+  },
+  {
+    "frame_number": 256,
+    "timestamp": 15.072165489196777,
+    "frame_type": "main",
+    "fps": 18.752532794434558,
+    "frame_time_ms": 53.32612991333008,
+    "dt": 0.05332612991333008
+  },
+  {
+    "frame_number": 257,
+    "timestamp": 15.139392137527466,
+    "frame_type": "main",
+    "fps": 14.87505364064844,
+    "frame_time_ms": 67.22664833068848,
+    "dt": 0.06722664833068848
+  },
+  {
+    "frame_number": 258,
+    "timestamp": 15.150697946548462,
+    "frame_type": "main",
+    "fps": 88.4501054407423,
+    "frame_time_ms": 11.305809020996094,
+    "dt": 0.011305809020996094
+  },
+  {
+    "frame_number": 259,
+    "timestamp": 15.200524091720581,
+    "frame_type": "main",
+    "fps": 20.06978457887131,
+    "frame_time_ms": 49.82614517211914,
+    "dt": 0.04982614517211914
+  },
+  {
+    "frame_number": 260,
+    "timestamp": 15.207160949707031,
+    "frame_type": "main",
+    "fps": 150.67370765527895,
+    "frame_time_ms": 6.636857986450195,
+    "dt": 0.006636857986450195
+  },
+  {
+    "frame_number": 261,
+    "timestamp": 15.249846935272217,
+    "frame_type": "main",
+    "fps": 23.426892614975593,
+    "frame_time_ms": 42.68598556518555,
+    "dt": 0.04268598556518555
+  },
+  {
+    "frame_number": 262,
+    "timestamp": 15.261265993118286,
+    "frame_type": "main",
+    "fps": 87.57289905000522,
+    "frame_time_ms": 11.419057846069336,
+    "dt": 0.011419057846069336
+  },
+  {
+    "frame_number": 263,
+    "timestamp": 15.309913635253906,
+    "frame_type": "main",
+    "fps": 20.55598084717437,
+    "frame_time_ms": 48.64764213562012,
+    "dt": 0.04864764213562012
+  },
+  {
+    "frame_number": 264,
+    "timestamp": 15.381821870803833,
+    "frame_type": "main",
+    "fps": 13.906612954029276,
+    "frame_time_ms": 71.90823554992676,
+    "dt": 0.07190823554992676
+  },
+  {
+    "frame_number": 265,
+    "timestamp": 15.441043376922607,
+    "frame_type": "main",
+    "fps": 16.88575765017533,
+    "frame_time_ms": 59.221506118774414,
+    "dt": 0.059221506118774414
+  },
+  {
+    "frame_number": 266,
+    "timestamp": 15.450251579284668,
+    "frame_type": "main",
+    "fps": 108.59882968256434,
+    "frame_time_ms": 9.208202362060547,
+    "dt": 0.009208202362060547
+  },
+  {
+    "frame_number": 267,
+    "timestamp": 15.488715410232544,
+    "frame_type": "main",
+    "fps": 25.99845037160089,
+    "frame_time_ms": 38.46383094787598,
+    "dt": 0.03846383094787598
+  },
+  {
+    "frame_number": 268,
+    "timestamp": 15.50076174736023,
+    "frame_type": "main",
+    "fps": 83.01278549657602,
+    "frame_time_ms": 12.046337127685547,
+    "dt": 0.012046337127685547
+  },
+  {
+    "frame_number": 269,
+    "timestamp": 15.553052425384521,
+    "frame_type": "main",
+    "fps": 19.12386753783233,
+    "frame_time_ms": 52.29067802429199,
+    "dt": 0.05229067802429199
+  },
+  {
+    "frame_number": 270,
+    "timestamp": 15.563772439956665,
+    "frame_type": "main",
+    "fps": 93.28345528545694,
+    "frame_time_ms": 10.720014572143555,
+    "dt": 0.010720014572143555
+  },
+  {
+    "frame_number": 271,
+    "timestamp": 15.61689829826355,
+    "frame_type": "main",
+    "fps": 18.823225296868408,
+    "frame_time_ms": 53.125858306884766,
+    "dt": 0.053125858306884766
+  },
+  {
+    "frame_number": 272,
+    "timestamp": 15.62716817855835,
+    "frame_type": "main",
+    "fps": 97.37211839814277,
+    "frame_time_ms": 10.269880294799805,
+    "dt": 0.010269880294799805
+  },
+  {
+    "frame_number": 273,
+    "timestamp": 15.681654453277588,
+    "frame_type": "main",
+    "fps": 18.353245934923773,
+    "frame_time_ms": 54.48627471923828,
+    "dt": 0.05448627471923828
+  },
+  {
+    "frame_number": 274,
+    "timestamp": 15.694872379302979,
+    "frame_type": "main",
+    "fps": 75.65483405483405,
+    "frame_time_ms": 13.217926025390625,
+    "dt": 0.013217926025390625
+  },
+  {
+    "frame_number": 275,
+    "timestamp": 15.729924440383911,
+    "frame_type": "main",
+    "fps": 28.52899285126412,
+    "frame_time_ms": 35.05206108093262,
+    "dt": 0.03505206108093262
+  },
+  {
+    "frame_number": 276,
+    "timestamp": 15.79278826713562,
+    "frame_type": "main",
+    "fps": 15.90739940076611,
+    "frame_time_ms": 62.863826751708984,
+    "dt": 0.06286382675170898
+  },
+  {
+    "frame_number": 277,
+    "timestamp": 15.801174640655518,
+    "frame_type": "main",
+    "fps": 119.24105188343994,
+    "frame_time_ms": 8.386373519897461,
+    "dt": 0.008386373519897461
+  },
+  {
+    "frame_number": 278,
+    "timestamp": 15.85679578781128,
+    "frame_type": "main",
+    "fps": 17.97877338271351,
+    "frame_time_ms": 55.62114715576172,
+    "dt": 0.05562114715576172
+  },
+  {
+    "frame_number": 279,
+    "timestamp": 15.872016429901123,
+    "frame_type": "main",
+    "fps": 65.70025062656642,
+    "frame_time_ms": 15.22064208984375,
+    "dt": 0.01522064208984375
+  },
+  {
+    "frame_number": 280,
+    "timestamp": 15.921185493469238,
+    "frame_type": "main",
+    "fps": 20.337991562818214,
+    "frame_time_ms": 49.169063568115234,
+    "dt": 0.049169063568115234
+  },
+  {
+    "frame_number": 281,
+    "timestamp": 15.934818506240845,
+    "frame_type": "main",
+    "fps": 73.35135796855599,
+    "frame_time_ms": 13.633012771606445,
+    "dt": 0.013633012771606445
+  },
+  {
+    "frame_number": 282,
+    "timestamp": 15.970055341720581,
+    "frame_type": "main",
+    "fps": 28.37939293882025,
+    "frame_time_ms": 35.23683547973633,
+    "dt": 0.03523683547973633
+  },
+  {
+    "frame_number": 283,
+    "timestamp": 15.980335235595703,
+    "frame_type": "main",
+    "fps": 97.2772688266809,
+    "frame_time_ms": 10.27989387512207,
+    "dt": 0.01027989387512207
+  },
+  {
+    "frame_number": 284,
+    "timestamp": 16.032252550125122,
+    "frame_type": "main",
+    "fps": 19.26139687817154,
+    "frame_time_ms": 51.917314529418945,
+    "dt": 0.051917314529418945
+  },
+  {
+    "frame_number": 285,
+    "timestamp": 16.09822177886963,
+    "frame_type": "main",
+    "fps": 15.158582554798604,
+    "frame_time_ms": 65.96922874450684,
+    "dt": 0.06596922874450684
+  },
+  {
+    "frame_number": 286,
+    "timestamp": 16.110356330871582,
+    "frame_type": "main",
+    "fps": 82.4093052499214,
+    "frame_time_ms": 12.134552001953125,
+    "dt": 0.012134552001953125
+  },
+  {
+    "frame_number": 287,
+    "timestamp": 16.161922216415405,
+    "frame_type": "main",
+    "fps": 19.392666090261372,
+    "frame_time_ms": 51.56588554382324,
+    "dt": 0.05156588554382324
+  },
+  {
+    "frame_number": 288,
+    "timestamp": 16.17328977584839,
+    "frame_type": "main",
+    "fps": 87.96963023553346,
+    "frame_time_ms": 11.367559432983398,
+    "dt": 0.011367559432983398
+  },
+  {
+    "frame_number": 289,
+    "timestamp": 16.207271337509155,
+    "frame_type": "main",
+    "fps": 29.42772348083548,
+    "frame_time_ms": 33.9815616607666,
+    "dt": 0.0339815616607666
+  },
+  {
+    "frame_number": 290,
+    "timestamp": 16.219276428222656,
+    "frame_type": "main",
+    "fps": 83.29799614720076,
+    "frame_time_ms": 12.005090713500977,
+    "dt": 0.012005090713500977
+  },
+  {
+    "frame_number": 291,
+    "timestamp": 16.270719528198242,
+    "frame_type": "main",
+    "fps": 19.43895294946424,
+    "frame_time_ms": 51.44309997558594,
+    "dt": 0.05144309997558594
+  },
+  {
+    "frame_number": 292,
+    "timestamp": 16.340061902999878,
+    "frame_type": "main",
+    "fps": 14.421196315537935,
+    "frame_time_ms": 69.34237480163574,
+    "dt": 0.06934237480163574
+  },
+  {
+    "frame_number": 293,
+    "timestamp": 16.35215473175049,
+    "frame_type": "main",
+    "fps": 82.69363774373534,
+    "frame_time_ms": 12.092828750610352,
+    "dt": 0.012092828750610352
+  },
+  {
+    "frame_number": 294,
+    "timestamp": 16.399129152297974,
+    "frame_type": "main",
+    "fps": 21.28818170282959,
+    "frame_time_ms": 46.97442054748535,
+    "dt": 0.04697442054748535
+  },
+  {
+    "frame_number": 295,
+    "timestamp": 16.412643909454346,
+    "frame_type": "main",
+    "fps": 73.99319043838759,
+    "frame_time_ms": 13.51475715637207,
+    "dt": 0.01351475715637207
+  },
+  {
+    "frame_number": 296,
+    "timestamp": 16.449227333068848,
+    "frame_type": "main",
+    "fps": 27.334784478825874,
+    "frame_time_ms": 36.58342361450195,
+    "dt": 0.03658342361450195
+  },
+  {
+    "frame_number": 297,
+    "timestamp": 16.462337493896484,
+    "frame_type": "main",
+    "fps": 76.27671491961883,
+    "frame_time_ms": 13.110160827636719,
+    "dt": 0.013110160827636719
+  },
+  {
+    "frame_number": 298,
+    "timestamp": 16.50980520248413,
+    "frame_type": "main",
+    "fps": 21.06695329844194,
+    "frame_time_ms": 47.467708587646484,
+    "dt": 0.047467708587646484
+  },
+  {
+    "frame_number": 299,
+    "timestamp": 16.579136610031128,
+    "frame_type": "main",
+    "fps": 14.423477546192018,
+    "frame_time_ms": 69.33140754699707,
+    "dt": 0.06933140754699707
+  }
+]

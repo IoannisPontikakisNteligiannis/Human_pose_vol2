@@ -1,0 +1,17 @@
+{
+    "timestamp": "2025-10-23T15:11:22.383685",
+    "statistics": {
+        "count": 2,
+        "average": 1035.72,
+        "fastest": 543.46,
+        "slowest": 1527.97
+    },
+    "all_results_ms": [
+        1527.97,
+        543.46
+    ],
+    "settings": {
+        "movement_threshold_degrees": 15,
+        "gpio_enabled": false
+    }
+}
