@@ -424,7 +424,7 @@ def main():
         # Print final stats
         bg_stats = processor.get_processing_stats()
         if bg_stats:
-            print(f"\n📊 FINAL BACKGROUND PROCESSING STATS:")
+            print(f"\n FINAL BACKGROUND PROCESSING STATS:")
             print(f"   Average: {bg_stats['avg_ms']:.2f}ms ({1000/bg_stats['avg_ms']:.1f} FPS)")
             print(f"   Min: {bg_stats['min_ms']:.2f}ms")
             print(f"   Max: {bg_stats['max_ms']:.2f}ms")
