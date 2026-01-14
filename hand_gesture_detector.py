@@ -4,6 +4,7 @@ Useful for controlling the application with hand signals
 """
 
 import math
+import numpy as np
 
 
 class HandGestureDetector:
@@ -22,7 +23,7 @@ class HandGestureDetector:
     
     def is_finger_extended(self, landmarks, finger_tip_id, finger_pip_id, finger_mcp_id):
         """
-        Check if a finger is extended
+        Check if a finger is extended using angle-based detection
         
         Args:
             landmarks: Hand landmarks
@@ -37,24 +38,55 @@ class HandGestureDetector:
         pip = landmarks.landmark[finger_pip_id]
         mcp = landmarks.landmark[finger_mcp_id]
         
-        # Check if tip is higher than pip (for vertical orientation)
-        # This is a simplified check - works best when hand is upright
-        return tip.y < pip.y and pip.y < mcp.y
+        # Calculate vectors
+        # Vector from MCP to PIP
+        v1 = np.array([pip.x - mcp.x, pip.y - mcp.y, pip.z - mcp.z])
+        # Vector from PIP to tip
+        v2 = np.array([tip.x - pip.x, tip.y - pip.y, tip.z - pip.z])
+        
+        # Calculate angle between vectors (cosine similarity)
+        dot_product = np.dot(v1, v2)
+        v1_norm = np.linalg.norm(v1)
+        v2_norm = np.linalg.norm(v2)
+        
+        if v1_norm == 0 or v2_norm == 0:
+            return False
+            
+        cos_angle = dot_product / (v1_norm * v2_norm)
+        # Clamp to avoid numerical issues
+        cos_angle = np.clip(cos_angle, -1, 1)
+        angle = np.arccos(cos_angle)
+        
+        # Finger is extended if angle is small (vectors are aligned)
+        return angle < np.pi / 2  # ~90 degrees, more lenient
     
     def is_thumb_extended(self, landmarks):
-        """Check if thumb is extended (different logic than fingers)"""
+        """Check if thumb is extended using angle-based detection"""
         thumb_tip = landmarks.landmark[4]
         thumb_ip = landmarks.landmark[3]
         thumb_mcp = landmarks.landmark[2]
-        
-        # Thumb extends horizontally, not vertically
-        # Check if tip is further from wrist than IP joint
         wrist = landmarks.landmark[0]
         
-        dist_tip = self.calculate_distance(thumb_tip, wrist)
-        dist_ip = self.calculate_distance(thumb_ip, wrist)
+        # Calculate vectors
+        # Vector from MCP to IP
+        v1 = np.array([thumb_ip.x - thumb_mcp.x, thumb_ip.y - thumb_mcp.y, thumb_ip.z - thumb_mcp.z])
+        # Vector from IP to tip
+        v2 = np.array([thumb_tip.x - thumb_ip.x, thumb_tip.y - thumb_ip.y, thumb_tip.z - thumb_ip.z])
         
-        return dist_tip > dist_ip
+        # Calculate angle between vectors
+        dot_product = np.dot(v1, v2)
+        v1_norm = np.linalg.norm(v1)
+        v2_norm = np.linalg.norm(v2)
+        
+        if v1_norm == 0 or v2_norm == 0:
+            return False
+            
+        cos_angle = dot_product / (v1_norm * v2_norm)
+        cos_angle = np.clip(cos_angle, -1, 1)
+        angle = np.arccos(cos_angle)
+        
+        # Thumb is extended if angle is small (vectors are aligned)
+        return angle < np.pi / 2.5  # ~72 degrees, more lenient for thumb
     
     def detect_gesture(self, hand_landmarks):
         """
@@ -87,60 +119,80 @@ class HandGestureDetector:
             pinky_extended
         ])
         
-        # Detect specific gestures
-        gesture = "Unknown"
-        confidence = 0.8
+        # # Detect specific gestures
+        # gesture = "Unknown"
+        # confidence = 0.8
         
-        # Thumbs Up
-        if thumb_extended and not any([index_extended, middle_extended, ring_extended, pinky_extended]):
-            gesture = "Thumbs Up"
-            confidence = 0.9
+        # # Thumbs Up
+        # if thumb_extended and not any([index_extended, middle_extended, ring_extended, pinky_extended]):
+        #     gesture = "Thumbs Up"
+        #     confidence = 0.5
         
-        # Fist (no fingers extended)
-        elif extended_count == 0:
-            gesture = "Fist"
-            confidence = 0.95
+        # # Fist (no fingers extended)
+        # elif extended_count == 0:
+        #     gesture = "Fist"
+        #     confidence = 0.5
         
-        # Open Hand (all fingers extended)
-        elif extended_count == 5:
-            gesture = "Open Hand"
-            confidence = 0.9
+        # # Open Hand (all fingers extended)
+        # elif extended_count == 5:
+        #     gesture = "Open Hand"
+        #     confidence = 0.5
         
-        # Peace Sign (index and middle extended)
-        elif index_extended and middle_extended and not any([thumb_extended, ring_extended, pinky_extended]):
-            gesture = "Peace Sign"
-            confidence = 0.85
+        # # Peace Sign (index and middle extended)
+        # elif index_extended and middle_extended and not any([thumb_extended, ring_extended, pinky_extended]):
+        #     gesture = "Peace Sign"
+        #     confidence = 0.85
         
-        # Pointing (only index extended)
-        elif index_extended and not any([thumb_extended, middle_extended, ring_extended, pinky_extended]):
-            gesture = "Pointing"
-            confidence = 0.85
+        # # Pointing (only index extended)
+        # elif index_extended and not any([thumb_extended, middle_extended, ring_extended, pinky_extended]):
+        #     gesture = "Pointing"
+        #     confidence = 0.85
         
-        # Pinch/Spread/Touch with thumb and index
-        elif thumb_extended and index_extended:
+        # Pinch/Spread/Touch with thumb and index (more lenient)
+        if thumb_extended and index_extended:
             thumb_tip = landmarks.landmark[4]
             index_tip = landmarks.landmark[8]
             distance = self.calculate_distance(thumb_tip, index_tip)
             
-            if distance < 0.03:  # Very close - touch for move
+            if distance < 0.08:  # Very close - touch for move
                 gesture = "Touch"
-                confidence = 0.9
-            elif distance < 0.08:  # Close together - pinch for zoom in
+                confidence = 0.5
+            elif distance < 0.15:  # Close together - pinch for zoom in
                 gesture = "Pinch"
-                confidence = 0.8
+                confidence = 0.5
             else:  # Far apart - spread for zoom out
                 gesture = "Spread"
-                confidence = 0.8
+                confidence = 0.5
+        # Alternative: just thumb and index close (even if not fully extended)
+        elif not thumb_extended and not index_extended:
+            # Check if thumb and index tips are close together
+            thumb_tip = landmarks.landmark[4]
+            index_tip = landmarks.landmark[8]
+            distance = self.calculate_distance(thumb_tip, index_tip)
+            
+            if distance < 0.06:  # Very close - touch
+                gesture = "Touch"
+                confidence = 0.7
+            elif distance < 0.12:  # Close - pinch
+                gesture = "Pinch"
+                confidence = 0.6
         
-        # Number gestures
-        elif extended_count == 1:
-            gesture = "One"
-        elif extended_count == 2:
-            gesture = "Two"
-        elif extended_count == 3:
-            gesture = "Three"
-        elif extended_count == 4:
-            gesture = "Four"
+        # # Number gestures
+        # elif extended_count == 1:
+        #     gesture = "One"
+        #     confidence = 0.8
+        # elif extended_count == 2:
+        #     gesture = "Two"
+        #     confidence = 0.8
+        # elif extended_count == 3:
+        #     gesture = "Three"
+        #     confidence = 0.8
+        # elif extended_count == 4:
+        #     gesture = "Four"
+        #     confidence = 0.8
+        else:
+             gesture = "Unknown"
+             confidence = 0.0
         
         self.current_gesture = gesture
         self.gesture_confidence = confidence
@@ -157,9 +209,17 @@ class HandGestureDetector:
             }
         }
     
-#     def get_current_gesture(self):
-        """Get the most recently detected gesture"""
-        return self.current_gesture
+    def calculate_distance(self, point1, point2):
+        """Calculate Euclidean distance between two 3D points"""
+        return math.sqrt(
+            (point1.x - point2.x) ** 2 +
+            (point1.y - point2.y) ** 2 +
+            (point1.z - point2.z) ** 2
+        )
+    
+# #     def get_current_gesture(self):
+#         """Get the most recently detected gesture"""
+#         return self.current_gesture
 
 
 # # Gesture-based control mappings (example)

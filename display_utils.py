@@ -115,26 +115,26 @@ class CombinedVisualizer:
             2
         )
         
-        # Left/Right hand status
-        if hand_tracker.has_left_hand():
-            cv2.putText(
-                image, "L",
-                (10, y_offset + 25),
-                cv2.FONT_HERSHEY_SIMPLEX,
-                0.5,
-                (0, 255, 255),  # Yellow
-                2
-            )
+        # # Left/Right hand status
+        # if hand_tracker.has_left_hand():
+        #     cv2.putText(
+        #         image, "L",
+        #         (10, y_offset + 25),
+        #         cv2.FONT_HERSHEY_SIMPLEX,
+        #         0.5,
+        #         (0, 255, 255),  # Yellow
+        #         2
+        #     )
         
-        if hand_tracker.has_right_hand():
-            cv2.putText(
-                image, "R",
-                (35, y_offset + 25),
-                cv2.FONT_HERSHEY_SIMPLEX,
-                0.5,
-                (0, 255, 255),  # Yellow
-                2
-            )
+        # if hand_tracker.has_right_hand():
+        #     cv2.putText(
+        #         image, "R",
+        #         (35, y_offset + 25),
+        #         cv2.FONT_HERSHEY_SIMPLEX,
+        #         0.5,
+        #         (0, 255, 255),  # Yellow
+        #         2
+        #     )
     
     # def draw_gesture_info(self, image, gesture_result, x=10, y=80):
     #     """
@@ -233,8 +233,12 @@ class DisplayManager:
         if angle is not None:
             # Handle both NormalizedLandmarkList and RepeatedCompositeContainer
             if hasattr(landmarks, 'landmark'):
+                if landmark_index >= len(landmarks.landmark):
+                    return
                 lm = landmarks.landmark[landmark_index]
             else:
+                if landmark_index >= len(landmarks):
+                    return
                 lm = landmarks[landmark_index]
             
             landmark_pixel = tuple(np.multiply([
@@ -252,8 +256,12 @@ class DisplayManager:
             # Show "Unknown" if angle can't be calculated
             # Handle both NormalizedLandmarkList and RepeatedCompositeContainer
             if hasattr(landmarks, 'landmark'):
+                if landmark_index >= len(landmarks.landmark):
+                    return
                 lm = landmarks.landmark[landmark_index]
             else:
+                if landmark_index >= len(landmarks):
+                    return
                 lm = landmarks[landmark_index]
             
             if lm.visibility > 0.3:
@@ -306,9 +314,15 @@ class DisplayManager:
         else:
             # Handle both NormalizedLandmarkList and RepeatedCompositeContainer
             if hasattr(landmarks, 'landmark'):
-                vis = landmarks.landmark[mp_pose.PoseLandmark.LEFT_SHOULDER.value].visibility
+                if mp_pose.PoseLandmark.LEFT_SHOULDER.value >= len(landmarks.landmark):
+                    vis = 0
+                else:
+                    vis = landmarks.landmark[mp_pose.PoseLandmark.LEFT_SHOULDER.value].visibility
             else:
-                vis = landmarks[mp_pose.PoseLandmark.LEFT_SHOULDER.value].visibility
+                if mp_pose.PoseLandmark.LEFT_SHOULDER.value >= len(landmarks):
+                    vis = 0
+                else:
+                    vis = landmarks[mp_pose.PoseLandmark.LEFT_SHOULDER.value].visibility
             
             if vis > 0.3:
                 self.draw_angle_text(image, landmarks, None, 
@@ -326,9 +340,15 @@ class DisplayManager:
         else:
             # Handle both NormalizedLandmarkList and RepeatedCompositeContainer
             if hasattr(landmarks, 'landmark'):
-                vis = landmarks.landmark[mp_pose.PoseLandmark.RIGHT_SHOULDER.value].visibility
+                if mp_pose.PoseLandmark.RIGHT_SHOULDER.value >= len(landmarks.landmark):
+                    vis = 0
+                else:
+                    vis = landmarks.landmark[mp_pose.PoseLandmark.RIGHT_SHOULDER.value].visibility
             else:
-                vis = landmarks[mp_pose.PoseLandmark.RIGHT_SHOULDER.value].visibility
+                if mp_pose.PoseLandmark.RIGHT_SHOULDER.value >= len(landmarks):
+                    vis = 0
+                else:
+                    vis = landmarks[mp_pose.PoseLandmark.RIGHT_SHOULDER.value].visibility
             
             if vis > 0.3:
                 self.draw_angle_text(image, landmarks, None, 
@@ -345,9 +365,15 @@ class DisplayManager:
         else:
             # Handle both NormalizedLandmarkList and RepeatedCompositeContainer
             if hasattr(landmarks, 'landmark'):
-                vis = landmarks.landmark[mp_pose.PoseLandmark.LEFT_HIP.value].visibility
+                if mp_pose.PoseLandmark.LEFT_HIP.value >= len(landmarks.landmark):
+                    vis = 0
+                else:
+                    vis = landmarks.landmark[mp_pose.PoseLandmark.LEFT_HIP.value].visibility
             else:
-                vis = landmarks[mp_pose.PoseLandmark.LEFT_HIP.value].visibility
+                if mp_pose.PoseLandmark.LEFT_HIP.value >= len(landmarks):
+                    vis = 0
+                else:
+                    vis = landmarks[mp_pose.PoseLandmark.LEFT_HIP.value].visibility
             
             if vis > 0.3:
                 self.draw_angle_text(image, landmarks, None, 
@@ -363,9 +389,15 @@ class DisplayManager:
         else:
             # Handle both NormalizedLandmarkList and RepeatedCompositeContainer
             if hasattr(landmarks, 'landmark'):
-                vis = landmarks.landmark[mp_pose.PoseLandmark.RIGHT_HIP.value].visibility
+                if mp_pose.PoseLandmark.RIGHT_HIP.value >= len(landmarks.landmark):
+                    vis = 0
+                else:
+                    vis = landmarks.landmark[mp_pose.PoseLandmark.RIGHT_HIP.value].visibility
             else:
-                vis = landmarks[mp_pose.PoseLandmark.RIGHT_HIP.value].visibility
+                if mp_pose.PoseLandmark.RIGHT_HIP.value >= len(landmarks):
+                    vis = 0
+                else:
+                    vis = landmarks[mp_pose.PoseLandmark.RIGHT_HIP.value].visibility
             
             if vis > 0.3:
                 self.draw_angle_text(image, landmarks, None, 
@@ -381,9 +413,15 @@ class DisplayManager:
         else:
             # Handle both NormalizedLandmarkList and RepeatedCompositeContainer
             if hasattr(landmarks, 'landmark'):
-                vis = landmarks.landmark[mp_pose.PoseLandmark.LEFT_KNEE.value].visibility
+                if mp_pose.PoseLandmark.LEFT_KNEE.value >= len(landmarks.landmark):
+                    vis = 0
+                else:
+                    vis = landmarks.landmark[mp_pose.PoseLandmark.LEFT_KNEE.value].visibility
             else:
-                vis = landmarks[mp_pose.PoseLandmark.LEFT_KNEE.value].visibility
+                if mp_pose.PoseLandmark.LEFT_KNEE.value >= len(landmarks):
+                    vis = 0
+                else:
+                    vis = landmarks[mp_pose.PoseLandmark.LEFT_KNEE.value].visibility
             
             if vis > 0.3:
                 self.draw_angle_text(image, landmarks, None, 
@@ -399,9 +437,15 @@ class DisplayManager:
         else:
             # Handle both NormalizedLandmarkList and RepeatedCompositeContainer
             if hasattr(landmarks, 'landmark'):
-                vis = landmarks.landmark[mp_pose.PoseLandmark.RIGHT_KNEE.value].visibility
+                if mp_pose.PoseLandmark.RIGHT_KNEE.value >= len(landmarks.landmark):
+                    vis = 0
+                else:
+                    vis = landmarks.landmark[mp_pose.PoseLandmark.RIGHT_KNEE.value].visibility
             else:
-                vis = landmarks[mp_pose.PoseLandmark.RIGHT_KNEE.value].visibility
+                if mp_pose.PoseLandmark.RIGHT_KNEE.value >= len(landmarks):
+                    vis = 0
+                else:
+                    vis = landmarks[mp_pose.PoseLandmark.RIGHT_KNEE.value].visibility
             
             if vis > 0.3:
                 self.draw_angle_text(image, landmarks, None, 
@@ -446,7 +490,7 @@ class DisplayManager:
             cv2.putText(image, th_text, (x_pos, y_pos), 
                        cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 0), 1, cv2.LINE_8)
     
-    def draw_exercise_info(self, image, exercise_results, zoom=1.0, offset=(0,0)):
+    def draw_exercise_info(self, image, exercise_results, zoom=0.5, offset=(0,0)):
         """Draw exercise detection information"""
         if not exercise_results:
             return
@@ -455,11 +499,26 @@ class DisplayManager:
         base_x1, base_y1 = 350, 50
         base_width, base_height = 280, 250
         
+        # ZOOM LIMITS - Modify these values to control zoom range
+        zoom = max(0.3, min(zoom, 1.5))  # Min zoom 0.3x, Max zoom 1.5x
+        
         # Apply zoom and offset
         x1 = int(base_x1 + offset[0])
         y1 = int(base_y1 + offset[1])
+        
+        #  POSITION LIMITS - Prevent panel from going off-screen
+        image_height, image_width = image.shape[:2]
+        x1 = max(10, min(x1, image_width - 100))  # Keep at least 10px from left, 100px from right
+        y1 = max(10, min(y1, image_height - 100))  # Keep at least 10px from top, 100px from bottom
+        
         width = int(base_width * zoom)
-        height = int(base_height * zoom)
+        # Scale height more aggressively to prevent text overflow
+        height = int(base_height * zoom )  
+        
+        #  SIZE LIMITS - Prevent panel from becoming too large/small
+        width = max(200, min(width, image_width - x1 - 20))  # Min 200px, max screen width minus margins
+        height = max(150, min(height, image_height - y1 - 20))  # Min 150px, max screen height minus margins
+        
         x2 = x1 + width
         y2 = y1 + height
         
@@ -477,36 +536,36 @@ class DisplayManager:
         
         cv2.rectangle(image, (x1, y1), (x2, y2), border_color, 2)
         
-        # Title with exercise-specific color
+        # Title with exercise-specific color - cap font scale to prevent excessive growth
         title_color = (255, 255, 255) if 'Abduction' in exercise_results.get('exercise', '') else (255, 255, 255)
         title_x = x1 + 10
         title_y = y1 + 30
-        font_scale = 0.7 * zoom
+        font_scale = min(0.5 * zoom,0.7 )  # Cap at 1.0 to prevent too large text
         cv2.putText(image, "EXERCISE TRACKER", (title_x, title_y), 
                    cv2.FONT_HERSHEY_SIMPLEX, font_scale, title_color, 2, cv2.LINE_8)
         
-        y_pos = title_y + 10
+        y_pos = title_y + int(20 * zoom)  # Adjusted spacing
         
         # Exercise name and arm
         exercise_text = f"{exercise_results['exercise']} ({exercise_results['arm']})"
         text_x = x1 + 10
-        text_font_scale = 0.6 * zoom
+        text_font_scale = min(0.6 * zoom, 0.8)  # Cap at 0.8
         cv2.putText(image, exercise_text, (text_x, y_pos), 
                    cv2.FONT_HERSHEY_SIMPLEX, text_font_scale, (255, 255, 255), 2, cv2.LINE_8)
-        y_pos += int(30 * zoom)
+        y_pos += int(35 * zoom)  # Increased spacing for larger text
         
         # Rep count 
         rep_text = f"REPS: {exercise_results['rep_count']}"
         cv2.putText(image, rep_text, (text_x, y_pos), 
                    cv2.FONT_HERSHEY_SIMPLEX, text_font_scale, (0, 255, 0), 2, cv2.LINE_8)
-        y_pos += int(35 * zoom)
+        y_pos += int(40 * zoom)  # Increased spacing
         
         # Current state
         state_text = f"State: {exercise_results['state']}"
         state_color = self._get_state_color(exercise_results['state'])
         cv2.putText(image, state_text, (text_x, y_pos), 
                    cv2.FONT_HERSHEY_SIMPLEX, text_font_scale * 0.83, state_color, 2, cv2.LINE_8)
-        y_pos += int(25 * zoom)
+        y_pos += int(30 * zoom)  # Increased spacing
         
         # Current angle
         if exercise_results['angle'] is not None:
@@ -516,20 +575,20 @@ class DisplayManager:
         else:
             cv2.putText(image, "Angle: N/A", (text_x, y_pos), 
                        cv2.FONT_HERSHEY_SIMPLEX, text_font_scale * 0.83, (0, 0, 255), 1, cv2.LINE_8)
-        y_pos += int(25 * zoom)
+        y_pos += int(30 * zoom)  # Increased spacing
         
         # Peak and valley angles (if available)
         if exercise_results.get('peak_angle') is not None:
             peak_text = f"Peak: {exercise_results['peak_angle']}"
             cv2.putText(image, peak_text, (text_x, y_pos), 
                        cv2.FONT_HERSHEY_SIMPLEX, text_font_scale * 0.67, (100, 255, 100), 1, cv2.LINE_8)
-            y_pos += int(20 * zoom)
+            y_pos += int(25 * zoom)  # Increased spacing
             
         if exercise_results.get('valley_angle') is not None:
             valley_text = f"Valley: {exercise_results['valley_angle']}"
             cv2.putText(image, valley_text, (text_x, y_pos), 
                        cv2.FONT_HERSHEY_SIMPLEX, text_font_scale * 0.67, (100, 255, 100), 1, cv2.LINE_8)
-            y_pos += int(20 * zoom)            
+            y_pos += int(25 * zoom)  # Increased spacing            
 
        
         # Feedback (word-wrapped if too long)
@@ -602,9 +661,14 @@ class DisplayManager:
             "Press 'q' to quit",
             "Press y to start reaction time test",
             "Press v to print reaction time stats",
+            "Press h to toggle hand control ",
+            "press f to save fps data to file",
+            "press p to reset exercise panel position",
+            "Press y to start reaction time test",
+            "Press v to print reaction time stats"
         ]
         
-        y_start = 310
+        y_start = 200
         for i, instruction in enumerate(instructions):
             y_pos = y_start + i * 18
              # Draw outline by drawing black text at multiple offset positions

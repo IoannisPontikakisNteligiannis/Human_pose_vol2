@@ -4,33 +4,33 @@ import mediapipe as mp
 mp_pose = mp.solutions.pose
 
 # Smoothing and depth reliability parameters
-_USE_SMOOTHING = True
-_SMOOTHING_ALPHA = 0.4  # EMA alpha (0..1), higher = less smoothing
+_USE_SMOOTHING = False  # Enable angle smoothing
+# _SMOOTHING_ALPHA = 0.4  # EMA alpha (0..1), higher = less smoothing
 _DEPTH_STD_THRESHOLD_MM = 80  # stddev in mm within 3x3 window above which depth is unreliable
 _MAX_DEPTH_MM = 4000  # ignore depths beyond this (in mm)
 
 # Internal smoothing state: previous smoothed angles per joint
 _prev_smoothed_angles = {}
 
-
-def _smooth_angles(raw_angles: dict) -> dict:
-    """Apply exponential moving average smoothing to angles in-place and return new dict."""
-    if not _USE_SMOOTHING:
-        return raw_angles
-    smoothed = {}
-    for k, v in raw_angles.items():
-        if v is None:
-            # Keep previous smoothed if exists, otherwise None
-            smoothed[k] = _prev_smoothed_angles.get(k)
-            continue
-        prev = _prev_smoothed_angles.get(k)
-        if prev is None:
-            s = v
-        else:
-            s = prev * (1.0 - _SMOOTHING_ALPHA) + v * _SMOOTHING_ALPHA
-        smoothed[k] = s
-        _prev_smoothed_angles[k] = s
-    return smoothed
+"""  Exponential moving average smoothing of angles (disabled by default)"""
+# def _smooth_angles(raw_angles: dict) -> dict:
+#     """Apply exponential moving average smoothing to angles in-place and return new dict."""
+#     if not _USE_SMOOTHING:
+#         return raw_angles
+#     smoothed = {}
+#     for k, v in raw_angles.items():
+#         if v is None:
+#             # Keep previous smoothed if exists, otherwise None
+#             smoothed[k] = _prev_smoothed_angles.get(k)
+#             continue
+#         prev = _prev_smoothed_angles.get(k)
+#         if prev is None:
+#             s = v
+#         else:
+#             s = prev * (1.0 - _SMOOTHING_ALPHA) + v * _SMOOTHING_ALPHA
+#         smoothed[k] = s
+#         _prev_smoothed_angles[k] = s
+#     return smoothed
 
 
 def calculate_angle(point1, point2, point3):
@@ -98,7 +98,7 @@ def check_landmark_visibility(landmarks, landmark_indices, min_visibility=0.7):
         return False
         
     for idx in landmark_indices:
-        if landmarks[idx].visibility < min_visibility:
+        if idx >= len(landmarks) or landmarks[idx].visibility < min_visibility:
             return False
     
     return True
@@ -146,6 +146,23 @@ def calculate_all_angles(landmarks, depth_info=None):
         except Exception:
             use_depth = False
 
+    # Compute a local reference center (pelvis mid-point preferred, fall back to shoulders)
+    try:
+        lhip = landmarks[mp_pose.PoseLandmark.LEFT_HIP.value]
+        rhip = landmarks[mp_pose.PoseLandmark.RIGHT_HIP.value]
+        ref_cx = (lhip.x + rhip.x) / 2.0
+        ref_cy = (lhip.y + rhip.y) / 2.0
+    except Exception:
+        # fallback to shoulder midpoint
+        try:
+            lsh = landmarks[mp_pose.PoseLandmark.LEFT_SHOULDER.value]
+            rsh = landmarks[mp_pose.PoseLandmark.RIGHT_SHOULDER.value]
+            ref_cx = (lsh.x + rsh.x) / 2.0
+            ref_cy = (lsh.y + rsh.y) / 2.0
+        except Exception:
+            ref_cx = 0.5
+            ref_cy = 0.5
+
     def landmark_to_point(idx):
         lm = landmarks[idx]
         # If depth available, back-project to metric 3D coordinates
@@ -170,8 +187,8 @@ def calculate_all_angles(landmarks, depth_info=None):
             Z = z
             return [X, Y, Z]
         else:
-            # Use normalized image coordinates (x,y)
-            return [lm.x, lm.y]
+            # Use normalized image coordinates (x,y) relative to pelvis/shoulder center
+            return [lm.x - ref_cx, lm.y - ref_cy]
     
     # Check visibility for different body parts
     left_arm_visible = check_landmark_visibility(
@@ -334,4 +351,11 @@ def calculate_all_angles(landmarks, depth_info=None):
         # Convert to anatomical angle (0° = full extension, increases with flexion)
         angles_dict["right_knee"] = 180 - vector_angle if vector_angle is not None else None
     
+    # Apply smoothing to reduce jitter/offsets across frames
+    try:
+        angles_dict = angles_dict #_smooth_angles(angles_dict) If smoothing desired
+    except Exception:
+        pass
+
+   
     return angles_dict

@@ -1,0 +1,13 @@
+# Core runtime dependencies
+numpy>=1.23,<2.0
+opencv-python>=4.6,<5.0
+mediapipe>=0.8,<1.0
+matplotlib>=3.5,<4.0
+
+# Build / extension
+pybind11>=2.10
+setuptools>=60
+
+# Optional (RealSense / Raspberry Pi hardware)
+# pyrealsense2
+# RPi.GPIO for Reaction time on Raspberry Pi

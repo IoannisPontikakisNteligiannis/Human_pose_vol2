@@ -122,7 +122,7 @@ class RealSenseCapture:
         h, w = self.last_depth.shape
         if x < 0 or x >= w or y < 0 or y >= h:
             return None
-        depth_mm = int(self.last_depth[y, x])
+        depth_mm = np.mean((self.last_depth[y, x]))
         if depth_mm == 0:
             return None
         return depth_mm / 1000.0

@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 import mediapipe as mp
 import time
+from collections import deque
 
 from pose_recorder import PoseRecorder
 from display_utils import DisplayManager,CombinedVisualizer
@@ -16,10 +17,10 @@ from hand_gesture_detector import HandGestureDetector
  # Try to use C++ optimized version, fallback to Python if unavailable
 # try:
 #     from angle_calculator_cpp import calculate_all_angles
-#     print("✓ Using C++ optimized angle calculator")
+#     print(" Using C++ optimized angle calculator")
 # except ImportError:
 from angle_calculator import calculate_all_angles
-print("✓ Using Python angle calculator")
+print("Using Python angle calculator")
 
 
 # Initialize MediaPipe
@@ -33,6 +34,8 @@ def main():
     FRAME_HEIGHT = 480
     PROCESS_EVERY_N_FRAMES = 1  
     PROCESS_HANDS_EVERY_N_FRAMES = 1  # Process hands less frequently for performance
+    # Temporal smoothing: moving-average window (frames)
+    SMOOTH_FRAMES = 0  # set between 20-30 for smoother angles (if needed) it adds latency to the exercise detection 
 
     # Set up video capture
     # Set up video capture (prefer Intel RealSense if available)
@@ -41,7 +44,7 @@ def main():
         from realsense_adapter import RealSenseCapture
         cap = RealSenseCapture(FRAME_WIDTH, FRAME_HEIGHT)
         USE_REALSENSE = True
-        print("✓ Using Intel RealSense camera")
+        print(" Using Intel RealSense camera")
     except Exception:
         cap = cv2.VideoCapture(0)
         if not cap.isOpened():
@@ -104,6 +107,14 @@ def main():
     cached_pose_results = None
     cached_pose_landmarks = None
     cached_angles_dict = None
+    # Set up per-angle history buffers for temporal averaging
+    angle_names = [
+        "left_elbow", "right_elbow",
+        "left_shoulder", "right_shoulder",
+        "left_hip", "right_hip",
+        "left_knee", "right_knee"
+    ]
+    angle_history = {name: deque(maxlen=SMOOTH_FRAMES) for name in angle_names}
     cached_exercise_results = None
 
     # Cache for skipped frames (HANDS)
@@ -187,11 +198,34 @@ def main():
                     except TypeError:
                         angles_dict = calculate_all_angles(pose_landmarks)
 
+                    # if the angle calculator returns None, replace with defaults
+                    if angles_dict is None:
+                        angles_dict = {
+                            "left_elbow": None, "right_elbow": None,
+                            "left_shoulder": None, "right_shoulder": None,
+                            "left_hip": None, "right_hip": None,
+                            "left_knee": None, "right_knee": None
+                        }
+
+                    "Uncomment below to enable temporal smoothing of angles "
+                    
+                    # Build temporally-averaged angles (moving mean over recent frames)
+                    # avg_angles = {}
+                    # for name in angle_names:
+                    #     val = angles_dict.get(name)
+                    #     # append new valid value if present
+                    #     if val is not None:
+                    #         angle_history[name].append(float(val))
+                    #     # compute mean ignoring None entries
+                    #     hist = [v for v in angle_history[name] if v is not None]
+                    #     avg_angles[name] = float(sum(hist) / len(hist)) if len(hist) > 0 else None
+
+                    # Use averaged angles for detectors, recording and display
                     if exercise_detection_enabled:
-                        exercise_results = current_detector.update(angles_dict)
+                        exercise_results = current_detector.update(angles_dict) # can use avg_angles if desired
 
                     if pose_recorder.recording:
-                        pose_recorder.add_frame(pose_results.pose_landmarks, angles_dict)
+                        pose_recorder.add_frame(pose_results.pose_landmarks,angles_dict) # can use avg_angles if desired
                 else:
                     pose_landmarks = None
                     if exercise_detection_enabled:
@@ -235,10 +269,13 @@ def main():
                         else:
                             print(f"  Landmark {i}: Not available")
 
-                # Cache pose results
+                # Cache pose results (store averaged angles)
                 cached_pose_results = pose_results
                 cached_pose_landmarks = pose_landmarks
-                cached_angles_dict = angles_dict.copy()
+                try:
+                    cached_angles_dict = angles_dict.copy() # could use avg_angles if desired
+                except Exception:
+                    cached_angles_dict = angles_dict.copy()
                 cached_exercise_results = exercise_results
 
                 current_fps = fps_counter.update('processing')
@@ -275,49 +312,10 @@ def main():
                     exercise_zoom = max(0.5, exercise_zoom * 0.95)
                 elif gesture_result['gesture'] == 'Spread':
                     exercise_zoom = min(2.0, exercise_zoom * 1.05)
-                elif gesture_result['gesture'] == 'Touch':
-                    if hand_tracker.has_right_hand():
-                        hand_landmarks = hand_tracker.get_all_landmarks('right')
-                        if hand_landmarks:
-                            # Get hand center position for moving the exercise tracker
-                            wrist = hand_landmarks.landmark[0]
-                            index_tip = hand_landmarks.landmark[8]
-                            
-                            # Use average of wrist and index tip as hand center
-                            hand_center_x = (wrist.x + index_tip.x) / 2
-                            hand_center_y = (wrist.y + index_tip.y) / 2
-                            
-                            # Convert to pixel coordinates
-                            hand_pixel_x = int(hand_center_x * FRAME_WIDTH)
-                            hand_pixel_y = int(hand_center_y * FRAME_HEIGHT)
-                            current_hand_pos = (hand_pixel_x, hand_pixel_y)
-                            
-                            if not touch_dragging:
-                                # Start dragging
-                                touch_dragging = True
-                                touch_start_hand_pos = current_hand_pos
-                                touch_start_offset = exercise_offset
-                            else:
-                                # Continue dragging - calculate relative movement
-                                if touch_start_hand_pos is not None:
-                                    delta_x = current_hand_pos[0] - touch_start_hand_pos[0]
-                                    delta_y = current_hand_pos[1] - touch_start_hand_pos[1]
-                                    
-                                    # Apply movement with reduced sensitivity
-                                    move_factor = 0.8
-                                    new_offset_x = touch_start_offset[0] + int(delta_x * move_factor)
-                                    new_offset_y = touch_start_offset[1] + int(delta_y * move_factor)
-                                    
-                                    # Clamp offset to keep panel on screen
-                                    max_offset_x = FRAME_WIDTH // 2 - 50  # Keep some margin
-                                    max_offset_y = FRAME_HEIGHT // 2 - 50
-                                    exercise_offset = (
-                                        max(-max_offset_x, min(max_offset_x, new_offset_x)),
-                                        max(-max_offset_y, min(max_offset_y, new_offset_y))
-                                    )
-                else:
-                    # Reset drag state when Touch gesture ends
-                    touch_dragging = False
+                # Removed the moving box functionality when fingers touch
+                # else:
+                #     # Reset drag state when Touch gesture ends
+                #     touch_dragging = False
                     touch_start_hand_pos = None
                     touch_start_offset = None
 
@@ -384,7 +382,7 @@ def main():
             if reaction_result['reaction_time_ms'] is not None:
                 if (reaction_result['reaction_time_ms'] != reaction_detector._last_printed_result and
                         reaction_result['angle_change'] is not None):
-                    print(f"\n⚡ REACTION TIME: {reaction_result['reaction_time_ms']}ms "
+                    print(f"\n REACTION TIME: {reaction_result['reaction_time_ms']}ms "
                           f"(angle change: {reaction_result['angle_change']}°)")
                     reaction_detector._last_printed_result = reaction_result['reaction_time_ms']
 
@@ -399,10 +397,11 @@ def main():
                 current_exercise
             )
 
-            # If depth available and pose landmarks exist, draw per-landmark depth
+            # If depth available and pose landmarks exist, compute mean person distance
             try:
                 if has_depth and pose_results and pose_results.pose_landmarks:
-                    for lm_idx, lm in enumerate(pose_results.pose_landmarks.landmark):
+                    depths = []
+                    for lm in pose_results.pose_landmarks.landmark:
                         try:
                             px = int(lm.x * FRAME_WIDTH)
                             py = int(lm.y * FRAME_HEIGHT)
@@ -413,24 +412,27 @@ def main():
                         px = max(0, min(px, FRAME_WIDTH - 1))
                         py = max(0, min(py, FRAME_HEIGHT - 1))
 
-                        depth_m = None
                         if hasattr(cap, 'get_depth_at'):
                             try:
-                                depth_m = cap.get_depth_at(px, py)
+                                d = cap.get_depth_at(px, py)
                             except Exception:
-                                depth_m = None
+                                d = None
+                            if d is not None:
+                                depths.append(d)
 
-                        if depth_m is not None:
-                            # draw a small circle and the depth (meters)
-                            cv2.circle(image, (px, py), 3, (0, 255, 0), -1)
-                            text = f"{depth_m:.2f}m"
-                            # offset text slightly to avoid overlapping the marker
-                            tx = px + 5
-                            ty = py - 5
-                            # ensure text is on-screen
-                            tx = max(0, min(tx, FRAME_WIDTH - 1))
-                            ty = max(10, min(ty, FRAME_HEIGHT - 1))
-                            cv2.putText(image, text, (tx, ty), cv2.FONT_HERSHEY_SIMPLEX, 0.3, (255, 255, 255), 1)
+                    mean_depth = None
+                    if len(depths) > 0:
+                        mean_depth = sum(depths) / len(depths)
+
+                    # Draw mean depth once on the image (top-left)
+                    if mean_depth is not None:
+                        text = f"Mean distance: {mean_depth:.2f} m"
+                        (tw, th), _ = cv2.getTextSize(text, cv2.FONT_HERSHEY_SIMPLEX, 0.7, 2)
+                        margin = 6
+                        x0, y0 = 10, 30
+                        cv2.rectangle(image, (x0 - margin, y0 - th - margin),
+                                      (x0 + tw + margin, y0 + margin), (0, 0, 0), -1)
+                        cv2.putText(image, text, (x0, y0), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 255, 255), 2)
             except Exception:
                 pass
 
@@ -447,7 +449,7 @@ def main():
             elif key == ord('d'):
                 depth_overlay_enabled = not depth_overlay_enabled
                 print(f"Depth overlay: {'ON' if depth_overlay_enabled else 'OFF'}")
-
+  
             elif key == ord('r'):
                 pose_recorder.start_recording() 
                 saved_filename = None
@@ -528,6 +530,8 @@ def main():
             elif key == ord('v'):
                 reaction_detector.print_stats()
                 reaction_detector.save_stats_json()
+                
+    
 
             elif key == ord('q'):
                 break

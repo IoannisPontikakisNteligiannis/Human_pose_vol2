@@ -1,0 +1,31 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+*.whl
+
+# Compiled extension artifacts
+*.pyd
+*.so
+angle_calculator_cpp.cp311-win_amd64.pyd
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+
+# Logs
+*.log
+
+# Python virtualenv
+.venv/
+env/
+venv/
+
+# Exclude large exported recordings if desired (uncomment to ignore)
+# exported_poses/*.json
